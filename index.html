@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#100b24">
+  <meta name="description" content="WHO AM I? — Kalyon Edition. A multiplayer character guessing game.">
+  <title>WHO AM I? — Kalyon Edition</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">?</span><span>WHO AM I?<small>KALYON EDITION</small></span></a>
+    <div class="top-actions"><span id="connection" class="status"><i></i> Offline mode</span><button class="ghost" id="howBtn">How to play</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">THE CHARACTER GUESSING GAME</div>
+      <h1>WHO AM <em>I?</em></h1>
+      <p>Pick a category. Join your friends. Figure out who everyone is.</p>
+      <div class="hero-actions"><button class="primary" id="createBtn">Create a room <span>↗</span></button><button class="secondary" id="joinToggle">Join with code</button></div>
+      <div id="joinPanel" class="join-panel hidden"><input id="joinCode" maxlength="6" placeholder="6-CHARACTER CODE" autocomplete="off"><button class="primary small" id="joinBtn">Join room</button></div>
+    </section>
+    <section class="mode-grid">
+      <article class="mode-card featured"><div class="card-icon">✦</div><div class="card-kicker">PLAY ON YOUR OWN</div><h2>Solo mode</h2><p>Practice with a random character from your chosen collection.</p><button class="text-btn" id="soloBtn">Play solo <span>→</span></button></article>
+      <article class="mode-card"><div class="card-icon">♧</div><div class="card-kicker">PLAY WITH FRIENDS</div><h2>Multiplayer</h2><p>Make a room and share its code with 1–9 friends.</p><button class="text-btn" id="multiplayerBtn">Create a room <span>→</span></button></article>
+    </section>
+    <section class="collection">
+      <div><div class="eyebrow">YOUR UNIVERSE</div><h2>Choose your world</h2><p>Mix categories or keep every round in one universe.</p></div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+    <footer>WHO AM I? — Created &amp; built by ChatGPT · Thought up by Kalyon</footer>
+  </main>
+  <dialog id="setupDialog">
+    <form method="dialog" id="setupForm">
+      <button class="close" value="cancel" aria-label="Close">×</button>
+      <div class="eyebrow">NEW GAME</div><h2 id="setupTitle">Set up your room</h2>
+      <label>Game category<select id="categorySelect"><option value="All">All worlds mixed</option><option>Anime</option><option>Western Animation</option><option>Movies</option><option>TV Shows</option><option>Video Games</option><option>Comics</option></select></label>
+      <label>Subcategory<select id="subSelect"><option value="All">All subcategories</option></select></label>
+      <label>Players<select id="playerLimit"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></label>
+      <label>Round length<select id="roundLength"><option value="180">3 minutes</option><option value="300" selected>5 minutes</option><option value="600">10 minutes</option><option value="0">No timer</option></select></label>
+      <button class="primary full" id="startSetup" value="default">Continue</button>
+    </form>
+  </dialog>
+  <dialog id="gameDialog" class="wide-dialog">
+    <div class="game-head"><div><div class="eyebrow" id="gameMode">SOLO ROUND</div><h2 id="gameHeading">Your mystery character</h2></div><button class="close" id="closeGame">×</button></div>
+    <div id="roomInfo" class="room-info hidden">ROOM CODE <strong id="roomCodeDisplay"></strong><button class="ghost" id="copyCode">Copy</button></div>
+    <div class="game-layout">
+      <div class="mystery-card"><div class="mystery-art" id="mysteryArt">?</div><div class="eyebrow">YOUR SECRET CHARACTER</div><h3 id="mysteryName">Hidden from you</h3><p id="mysteryHint">Ask questions to narrow it down.</p><div class="guess-row"><input id="guessInput" placeholder="Guess character name"><button class="primary small" id="guessCharacter">Guess</button></div><div class="guess-row"><input id="titleInput" placeholder="Guess the series / title"><button class="secondary small" id="guessTitle">Guess title</button></div></div>
+      <div class="game-side"><div class="panel"><div class="panel-title">ASK EVERYONE</div><div class="question-row"><input id="questionInput" placeholder="Does my character..."><button class="primary small" id="askBtn">Ask</button></div><div id="questionList" class="question-list"><p class="muted">Questions will appear here.</p></div></div><div class="panel"><div class="panel-title">PLAYERS &amp; SCORES</div><div id="playersList"><p class="muted">You are playing solo.</p></div></div><div class="panel"><div class="panel-title">GAME CHAT</div><div id="chatLog" class="chat-log"></div><div class="question-row"><input id="chatInput" placeholder="Send a message"><button class="secondary small" id="sendChat">Send</button></div></div></div>
+    </div>
+    <div class="game-footer"><span id="timerLabel">Have fun &amp; think smart.</span><button class="secondary small" id="newRound">New round</button></div>
+  </dialog>
+  <dialog id="howDialog"><button class="close" id="closeHow">×</button><div class="eyebrow">QUICK RULES</div><h2>How to play</h2><ol><li>Everyone gets a secret character. You cannot see your own.</li><li>Ask a yes/no question for everyone to answer.</li><li>Use the answers to narrow down your character.</li><li>Guess the character for <b>+1 point</b>, the title for <b>+2 points</b>, or both for <b>+3 total</b>.</li><li>In multiplayer, share the six-character room code with your friends.</li></ol><p class="muted">NEITHER means the question does not clearly apply or the answer is unknown.</p></dialog>
+  </main>
+  <div id="toast" role="status" class="toast"></div>
+  <script type="module" src="./app.js"></script>
+</body></html>

@@ -1,0 +1,314 @@
+[
+  {
+    "id": "a001",
+    "name": "Monkey D. Luffy",
+    "franchise": "One Piece",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Adventure",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Luffy"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a002",
+    "name": "Mikasa Ackerman",
+    "franchise": "Attack on Titan",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Mikasa"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a003",
+    "name": "Satoru Gojo",
+    "franchise": "Jujutsu Kaisen",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Gojo"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a004",
+    "name": "Tohru Honda",
+    "franchise": "Fruits Basket",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Shojo",
+      "Slice of Life"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Tohru"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a005",
+    "name": "Hachiman Hikigaya",
+    "franchise": "My Teen Romantic Comedy SNAFU",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Hachiman",
+      "八幡"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a006",
+    "name": "Rudeus Greyrat",
+    "franchise": "Mushoku Tensei",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Rudy",
+      "Rudeus"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a007",
+    "name": "Shoyo Hinata",
+    "franchise": "Haikyu!!",
+    "category": "Anime",
+    "subcategory": [
+      "Sports",
+      "Shonen"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Hinata"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a008",
+    "name": "Maomao",
+    "franchise": "The Apothecary Diaries",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Mystery",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Maomao"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a009",
+    "name": "Anya Forger",
+    "franchise": "Spy x Family",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action",
+      "Slice of Life"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Anya"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a010",
+    "name": "Frieren",
+    "franchise": "Frieren: Beyond Journey's End",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Frieren"
+    ],
+    "image": ""
+  },
+  {
+    "id": "w001",
+    "name": "Aang",
+    "franchise": "Avatar: The Last Airbender",
+    "category": "Western Animation",
+    "subcategory": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Avatar Aang"
+    ],
+    "image": ""
+  },
+  {
+    "id": "w002",
+    "name": "Dipper Pines",
+    "franchise": "Gravity Falls",
+    "category": "Western Animation",
+    "subcategory": [
+      "Mystery",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Dipper"
+    ],
+    "image": ""
+  },
+  {
+    "id": "m001",
+    "name": "Shrek",
+    "franchise": "Shrek",
+    "category": "Movies",
+    "subcategory": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Shrek"
+    ],
+    "image": ""
+  },
+  {
+    "id": "m002",
+    "name": "Marty McFly",
+    "franchise": "Back to the Future",
+    "category": "Movies",
+    "subcategory": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Marty"
+    ],
+    "image": ""
+  },
+  {
+    "id": "t001",
+    "name": "Eleven",
+    "franchise": "Stranger Things",
+    "category": "TV Shows",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Jane Hopper",
+      "El"
+    ],
+    "image": ""
+  },
+  {
+    "id": "t002",
+    "name": "Wednesday Addams",
+    "franchise": "Wednesday",
+    "category": "TV Shows",
+    "subcategory": [
+      "Mystery",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Wednesday"
+    ],
+    "image": ""
+  },
+  {
+    "id": "g001",
+    "name": "Link",
+    "franchise": "The Legend of Zelda",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Hero of Hyrule"
+    ],
+    "image": ""
+  },
+  {
+    "id": "g002",
+    "name": "Lara Croft",
+    "franchise": "Tomb Raider",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Lara"
+    ],
+    "image": ""
+  },
+  {
+    "id": "c001",
+    "name": "Spider-Man",
+    "franchise": "Marvel",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Peter Parker",
+      "Spidey"
+    ],
+    "image": ""
+  },
+  {
+    "id": "c002",
+    "name": "Batman",
+    "franchise": "DC",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Mystery"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Bruce Wayne",
+      "The Dark Knight"
+    ],
+    "image": ""
+  }
+]
