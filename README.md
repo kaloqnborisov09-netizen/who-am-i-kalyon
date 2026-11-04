@@ -56,3 +56,6 @@ The data format in `data/characters.json` is:
 - `image`: image URL (empty until a properly sourced image is added)
 
 The target catalog is 4,000 total: **2,000 Anime + 2,000 across Western Animation, Movies, TV Shows, Video Games, and Comics**. This starter does not claim to contain that catalog yet. The large collection should be imported from reliable sources and checked for duplicates, correct categories, and image-use rights before being added.
+
+## Character catalog update
+The `data/characters.json` file now contains 200 curated character records with names, franchise/title, category, subcategories, difficulty and aliases. Artwork is loaded on demand: anime uses the public Jikan API; other categories use a best-effort Wikimedia Commons search. External image availability is not guaranteed, and placeholders are shown when no suitable image is found. See `CATALOG_200.md`.
