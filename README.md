@@ -59,3 +59,15 @@ The target catalog is 4,000 total: **2,000 Anime + 2,000 across Western Animatio
 
 ## Character catalog update
 The `data/characters.json` file now contains 200 curated character records with names, franchise/title, category, subcategories, difficulty and aliases. Artwork is loaded on demand: anime uses the public Jikan API; other categories use a best-effort Wikimedia Commons search. External image availability is not guaranteed, and placeholders are shown when no suitable image is found. See `CATALOG_200.md`.
+
+
+## Free Solo character knowledge (no paid AI API)
+
+Solo Mode now has a free encyclopedia lookup helper. It requests public English Wikipedia page summaries for the selected character and title, caches results for the current browser session, and only returns short source-based sentences. It does not use a paid AI model or require an API key.
+
+Important limitations:
+- This is a free knowledge lookup, not a conversational large language model.
+- Wikipedia summaries do not contain every detail (for example, exact hair or eye colour may be missing).
+- If a fact is not found in the source text, the game says it cannot verify it rather than inventing an answer.
+- The first lookup needs an internet connection. The lookup may fail if Wikipedia is unavailable or the browser blocks the request.
+- Multiplayer chat and game logic are left as they were in the uploaded build.

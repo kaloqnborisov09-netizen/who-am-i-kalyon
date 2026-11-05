@@ -97,29 +97,107 @@ function guess(type){
    input.select();
  }
 }
-function answerSoloQuestion(question){
- const c=activeCharacter, q=question.toLowerCase();
- const tags=[...(c.subcategory||[]),c.category,c.difficulty].map(x=>String(x).toLowerCase());
+
+// Free character-knowledge helper.
+// It uses public Wikipedia summaries (no API key and no paid AI service).
+// It only answers from retrieved text and says when a detail cannot be verified.
+const wikiKnowledgeCache = new Map();
+
+function cleanWikiTitle(value){
+ return String(value||"").trim().replace(/\s+/g," ");
+}
+async function fetchWikiSummary(title){
+ const safeTitle=cleanWikiTitle(title);
+ if(!safeTitle)return "";
+ const key=safeTitle.toLowerCase();
+ if(wikiKnowledgeCache.has(key))return wikiKnowledgeCache.get(key);
+ try{
+   const url="https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(safeTitle);
+   const response=await fetch(url,{headers:{Accept:"application/json"}});
+   if(!response.ok)throw new Error("Wikipedia summary unavailable");
+   const data=await response.json();
+   const extract=typeof data.extract==="string"?data.extract:"";
+   wikiKnowledgeCache.set(key,extract);
+   return extract;
+ }catch(error){
+   wikiKnowledgeCache.set(key,"");
+   return "";
+ }
+}
+function redactSecret(text,c){
+ let result=String(text||"");
+ const secretNames=[c?.name,...(c?.aliases||[])].filter(Boolean).sort((a,b)=>b.length-a.length);
+ for(const name of secretNames){
+   result=result.replace(new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi"),"the character");
+ }
+ return result;
+}
+function questionTopic(q){
+ if(/hair|hairstyle|hair colour|hair color|eyes|eye colour|eye color|appearance|look like|wear|outfit|clothes|height/.test(q))return "appearance";
+ if(/power|ability|abilities|skill|weapon|fight|strong|strength|magic|technique|attack/.test(q))return "abilities";
+ if(/personality|behav|kind of person|attitude|characteristic|temper/.test(q))return "personality";
+ if(/friend|family|sister|brother|mother|father|parent|enemy|rival|relationship|love|partner/.test(q))return "relationships";
+ if(/backstory|past|childhood|origin|history|where.*from|background/.test(q))return "background";
+ if(/anime|show|series|movie|game|franchise|title/.test(q))return "title";
+ if(/genre|category|type|kind/.test(q))return "genre";
+ return "general";
+}
+function answerFromSource(question,source,c){
+ const q=question.toLowerCase();
+ const topic=questionTopic(q);
+ const sentences=(source||"").replace(/\s+/g," ").match(/[^.!?]+[.!?]?/g)||[];
+ const topicWords={
+  appearance:["hair","eyes","wears","wearing","appearance","tall","short","clothing","outfit","skin"],
+  abilities:["power","ability","abilities","magic","fights","fighter","weapon","skill","technique","strength","can","uses"],
+  personality:["personality","kind","calm","cheerful","quiet","serious","brave","shy","friendly","arrogant","intelligent"],
+  relationships:["friend","family","sister","brother","mother","father","enemy","rival","wife","husband","relationship"],
+  background:["born","childhood","past","origin","grew","raised","background","before","village","kingdom"],
+  general:[]
+ };
+ let candidates=sentences.filter(s=>s.length>25 && s.length<420);
+ if(topic!=="general" && topic!=="title" && topic!=="genre"){
+   const words=topicWords[topic]||[];
+   const matches=candidates.filter(s=>words.some(w=>s.toLowerCase().includes(w)));
+   if(matches.length)candidates=matches;
+   else return "";
+ }
+ if(topic==="title"||topic==="genre")return "";
+ const chosen=candidates.slice(0,2).join(" ").trim();
+ return chosen?redactSecret(chosen,c):"";
+}
+async function answerSoloQuestion(question){
+ const c=activeCharacter;
+ if(!c)return "Start a round first.";
+ const q=question.toLowerCase();
  if(/(what|which) (anime|show|series|movie|game|franchise|title)/.test(q))return `The title is ${c.franchise}.`;
  if(q.includes("category"))return `This character is in ${c.category}.`;
  if(q.includes("difficult")||q.includes("difficulty"))return `Difficulty: ${c.difficulty}.`;
  if(q.includes("genre")||q.includes("type")||q.includes("kind"))return `Known tags: ${(c.subcategory||[]).join(", ")||"not listed"}.`;
- if(q.includes("name")||q.includes("who is"))return "I can't reveal the character's name—that's what you're guessing!";
- const matched=tags.find(t=>q.includes(t));
- if(matched){
-   if(/\b(is|are|does|has|can|have|wear|live|from|in)\b/.test(q))return `Based on the character data, yes: “${matched}” is listed.`;
- }
- if(q.startsWith("is ")||q.startsWith("does ")||q.startsWith("has ")||q.startsWith("can ")||q.startsWith("are ")||q.startsWith("do "))
-   return "I don't have reliable information to answer that from this character's database. Try asking about the category, title, or listed tags.";
- return "I can answer using the character's stored category, title, difficulty, and tags. Try a yes/no question or ask about those details.";
+ if(q.includes("name")||q.includes("who is")||q.includes("tell me who"))return "I can't reveal the character's name—that's what you're guessing!";
+ const [characterFacts,titleFacts]=await Promise.all([
+   fetchWikiSummary(c.name),
+   fetchWikiSummary(c.franchise)
+ ]);
+ const answer=answerFromSource(question,characterFacts,c);
+ if(answer)return `From my free character encyclopedia: ${answer}`;
+ const titleAnswer=answerFromSource(question,titleFacts,c);
+ if(titleAnswer)return `From the series information: ${titleAnswer}`;
+ return "I don't have a reliable source for that detail yet. I won't make something up. Try asking about appearance, abilities, personality, relationships or backstory.";
 }
-function askQuestion(){
+async function askQuestion(){
  const q=$("questionInput").value.trim();if(!q)return toast("Write a question first.");
  const el=document.createElement("div");el.className="question-item";
- if(mode==="solo"){el.textContent=`You: ${q} — AI: ${answerSoloQuestion(q)}`;}
- else{el.textContent=q+" — waiting for answers";}
- $("questionList").prepend(el);$("questionInput").value="";
- if(mode==="room")toast("Question sent to the room.");
+ if(mode==="solo"){
+   el.textContent=`You: ${q} — AI: Looking up character information…`;
+   $("questionList").prepend(el);
+   $("questionInput").value="";
+   const answer=await answerSoloQuestion(q);
+   el.textContent=`You: ${q} — AI: ${answer}`;
+ }else{
+   el.textContent=q+" — waiting for answers";
+   $("questionList").prepend(el);$("questionInput").value="";
+   toast("Question sent to the room.");
+ }
 }
 function giveUp(){
  if(!activeCharacter)return;
