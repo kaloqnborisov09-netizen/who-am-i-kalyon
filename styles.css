@@ -11,3 +11,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .series-art img{object-fit:cover;opacity:.85}
 .series-art span{font-size:24px;color:#c4b5fd}.series-art small{font-size:9px;letter-spacing:1.5px;color:#d9c8f6;text-align:center;max-width:60%;overflow-wrap:anywhere}
 @media(max-width:700px){body{background-attachment:scroll}.mystery-art{height:165px}.series-art{height:75px}}
+
+/* Guess result animations */
+.guess-feedback{min-height:0;height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto;opacity:0;transform:scale(.75);font-weight:1000;letter-spacing:2px;text-align:center;border-radius:12px}
+.guess-feedback.play{height:auto;min-height:54px;padding:12px 16px;margin:12px auto;animation:guess-pop .85s cubic-bezier(.2,.8,.2,1) both}
+.guess-feedback.wrong{color:#fecaca;background:linear-gradient(110deg,#7f1d1d66,#ef444433);border:1px solid #f87171; text-shadow:0 0 15px #ef444488}
+.guess-feedback.winner{color:#fef08a;background:linear-gradient(110deg,#854d0e88,#eab30833);border:1px solid #facc15;text-shadow:0 0 18px #facc15;box-shadow:0 0 28px #eab30833}
+@keyframes guess-pop{0%{opacity:0;transform:scale(.55) rotate(-4deg)}35%{opacity:1;transform:scale(1.12) rotate(2deg)}55%{transform:scale(.96) rotate(0)}75%{transform:scale(1.03)}100%{opacity:1;transform:scale(1)}}

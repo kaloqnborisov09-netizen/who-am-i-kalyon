@@ -60,12 +60,21 @@ async function loadCharacterArtwork(character){
 function openRound(character){if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt").innerHTML='<div class="art-placeholder">✦</div>';
   $("mysteryName").textContent="Hidden from you";
   $("mysteryHint").textContent=`Category: ${character.category} · Difficulty: ${character.difficulty}`;
-  $("guessInput").value="";$("titleInput").value="";$("questionList").innerHTML='<p class="muted">Questions will appear here.</p>';
+  $("guessInput").value="";$("titleInput").value="";$("guessFeedback").textContent="";$("guessFeedback").className="guess-feedback";$("questionList").innerHTML='<p class="muted">Questions will appear here.</p>';
   $("chatLog").innerHTML="";$("chatInput").value="";document.querySelectorAll(".game-side .panel").forEach((p,i)=>{if(i===2)p.classList.toggle("hidden",mode==="solo");});$("questionPanelTitle").textContent=mode==="solo"?"ASK THE AI":"ASK EVERYONE";$("askBtn").textContent=mode==="solo"?"Ask AI":"Ask";$("gameDialog").showModal();$("gameMode").textContent=mode==="solo"?"SOLO ROUND":"ROOM ROUND";
   loadCharacterArtwork(character);
 }
 function normalize(s){return String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");}
 function checkGuess(value,answers){const v=normalize(value);return !!v&&answers.filter(a=>typeof a==="string").some(a=>normalize(a)===v);}
+function showGuessFeedback(correct,type){
+ const el=$("guessFeedback");
+ if(!el)return;
+ el.textContent=correct?(type==="character"?"🏆 WINNER! CHARACTER FOUND!":"🏆 WINNER! TITLE FOUND!"):"✖ WRONG! TRY AGAIN";
+ el.className="guess-feedback "+(correct?"winner":"wrong");
+ // Restart the CSS animation so every guess gets its own visible effect.
+ void el.offsetWidth;
+ el.classList.add("play");
+}
 function guess(type){
  const field=type==="character"?"guessInput":"titleInput";
  const input=$(field);
@@ -78,10 +87,12 @@ function guess(type){
    if(alreadyAwarded){toast("You already earned points for that!");return;}
    if(type==="character"){soloScore+=1;characterGuessAwarded=true;toast("Correct character! +1 point");}
    else{soloScore+=2;titleGuessAwarded=true;toast("Correct title! +2 points");}
+   showGuessFeedback(true,type);
    $("soloScore").textContent=`Score: ${soloScore}`;
    input.disabled=true;
    input.placeholder="Correct! Start a new round to guess again.";
  }else{
+   showGuessFeedback(false,type);
    toast("Not quite — unlimited guesses, keep trying!");
    input.select();
  }
