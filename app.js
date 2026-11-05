@@ -13,7 +13,8 @@ const categories = [
  ["Comics","Marvel · DC · Superhero · Manga-style comics"]
 ];
 const subcategories = ["All","Isekai","Shonen","Romance","Shojo","Seinen","Fantasy","Action","Comedy","Slice of Life","Horror","Sports","Adventure","Mystery","Sci-Fi","Drama","Superhero","RPG"];
-let soloScore=0, characterGuessAwarded=false, titleGuessAwarded=false;\nlet selectedCategory="All", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
+let soloScore=0, characterGuessAwarded=false, titleGuessAwarded=false;
+let selectedCategory="All", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
 const toast = msg => { $("toast").textContent=msg; $("toast").classList.add("show"); setTimeout(()=>$("toast").classList.remove("show"),2600); };
 function showSetup(kind){mode=kind;$("setupTitle").textContent=kind==="room"?"Set up your room":"Set up solo mode";$("setupDialog").showModal();}
 function renderCategories(){ $("categoryGrid").innerHTML=categories.map(([name,desc])=>`<button class="category ${selectedCategory===name?"active":""}" data-cat="${name}"><b>${name}</b><small>${desc}</small></button>`).join(""); document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{selectedCategory=b.dataset.cat;$("categorySelect").value=selectedCategory;renderCategories();});}
@@ -59,7 +60,7 @@ async function loadCharacterArtwork(character){
     try{const poster=character.franchiseImage||await commonsArtwork(`${character.franchise} poster logo`);if(poster&&current())setArt(seriesBox,poster,character.franchise);}catch(e){console.info("Title artwork lookup unavailable.");}
   }
 }
-function openRound(character){if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt")
+function openRound(character){if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt").innerHTML='<div class="art-placeholder">✦</div>';
   $("mysteryName").textContent="Hidden from you";
   $("mysteryHint").textContent=`Category: ${character.category} · Difficulty: ${character.difficulty}`;
   $("guessInput").value="";$("titleInput").value="";$("questionList").innerHTML='<p class="muted">Questions will appear here.</p>';
@@ -114,7 +115,23 @@ function giveUp(){
  $("guessInput").disabled=true;$("titleInput").disabled=true;$("giveUpBtn").disabled=true;
  toast("Round revealed. No points earned for giving up.");
 }
-async function initFirebase(){try{app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);await signInAnonymously(auth);onAuthStateChanged(auth,u=>{user=u;if(u){$("connection").innerHTML="<i></i> Connected";$("connection").classList.add("online");}});}catch(e){$("connection").innerHTML="<i></i> Setup needed";console.warn("Firebase setup:",e);}}
+async function initFirebase(){
+  const status=$("connection");
+  status.innerHTML="<i></i> Connecting…";
+  status.classList.remove("online");
+  try{
+    app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);
+    onAuthStateChanged(auth,u=>{
+      user=u;
+      if(u){status.innerHTML="<i></i> Multiplayer connected";status.classList.add("online");}
+      else{status.innerHTML="<i></i> Solo ready · Multiplayer offline";status.classList.remove("online");}
+    });
+    await signInAnonymously(auth);
+  }catch(e){
+    user=null;status.innerHTML="<i></i> Solo ready · Multiplayer offline";status.classList.remove("online");
+    console.warn("Firebase connection unavailable; solo mode remains usable:",e);
+  }
+}
 function makeCode(){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return Array.from({length:6},()=>chars[Math.floor(Math.random()*chars.length)]).join("");}
 async function createRoom(){if(!db||!user)return toast("Enable Anonymous Authentication and Firestore first (see README).");const code=makeCode();const ref=doc(db,"rooms",code);const settings={host:user.uid,code,players:[{uid:user.uid,name:"Host",score:0}],category:$("categorySelect").value,subcategory:$("subSelect").value,maxPlayers:Number($("playerLimit").value),roundLength:Number($("roundLength").value),status:"lobby",createdAt:serverTimestamp()};try{await setDoc(ref,settings);roomId=code;roomData=settings;$("roomInfo").classList.remove("hidden");$("roomCodeDisplay").textContent=code;$("gameHeading").textContent="Waiting for friends";$("gameMode").textContent="MULTIPLAYER ROOM";$("mysteryArt").textContent="⌛";$("mysteryName").textContent="Room lobby";$("mysteryHint").textContent="Share the code with your friends. Lobby syncing is active."; $("gameDialog").showModal();listenRoom();}catch(e){toast("Could not create room. Check Firebase rules.");console.error(e);}}
 async function joinRoom(code){if(!db||!user)return toast("Enable Firebase first (see README).");code=code.toUpperCase().trim();if(code.length!==6)return toast("Enter a 6-character room code.");try{const ref=doc(db,"rooms",code),snap=await getDoc(ref);if(!snap.exists())return toast("Room not found.");const data=snap.data();if(data.players.length>=data.maxPlayers)return toast("That room is full.");if(!data.players.some(p=>p.uid===user.uid)){await updateDoc(ref,{players:[...data.players,{uid:user.uid,name:"Player "+(data.players.length+1),score:0}]});}roomId=code;roomData=data;$("roomInfo").classList.remove("hidden");$("roomCodeDisplay").textContent=code;$("gameHeading").textContent="Waiting for host";$("gameMode").textContent="MULTIPLAYER ROOM";$("mysteryArt").textContent="⌛";$("mysteryName").textContent="Room lobby";$("mysteryHint").textContent="You joined. Wait for the host to start."; $("gameDialog").showModal();listenRoom();}catch(e){toast("Could not join room. Check the code and Firebase rules.");console.error(e);}}
