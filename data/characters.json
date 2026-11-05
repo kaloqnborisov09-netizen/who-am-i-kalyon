@@ -1,0 +1,3202 @@
+[
+  {
+    "id": "a001",
+    "name": "Monkey D. Luffy",
+    "franchise": "One Piece",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Adventure",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Luffy"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a002",
+    "name": "Mikasa Ackerman",
+    "franchise": "Attack on Titan",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Mikasa"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a003",
+    "name": "Satoru Gojo",
+    "franchise": "Jujutsu Kaisen",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Gojo"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a004",
+    "name": "Tohru Honda",
+    "franchise": "Fruits Basket",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Shojo",
+      "Slice of Life"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Tohru"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a005",
+    "name": "Hachiman Hikigaya",
+    "franchise": "My Teen Romantic Comedy SNAFU",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Hachiman",
+      "八幡"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a006",
+    "name": "Rudeus Greyrat",
+    "franchise": "Mushoku Tensei",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Rudy",
+      "Rudeus"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a007",
+    "name": "Shoyo Hinata",
+    "franchise": "Haikyu!!",
+    "category": "Anime",
+    "subcategory": [
+      "Sports",
+      "Shonen"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Hinata"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a008",
+    "name": "Maomao",
+    "franchise": "The Apothecary Diaries",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Mystery",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Maomao"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a009",
+    "name": "Anya Forger",
+    "franchise": "Spy x Family",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action",
+      "Slice of Life"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Anya"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a010",
+    "name": "Frieren",
+    "franchise": "Frieren: Beyond Journey's End",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Frieren"
+    ],
+    "image": ""
+  },
+  {
+    "id": "w001",
+    "name": "Aang",
+    "franchise": "Avatar: The Last Airbender",
+    "category": "Western Animation",
+    "subcategory": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Avatar Aang"
+    ],
+    "image": ""
+  },
+  {
+    "id": "w002",
+    "name": "Dipper Pines",
+    "franchise": "Gravity Falls",
+    "category": "Western Animation",
+    "subcategory": [
+      "Mystery",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Dipper"
+    ],
+    "image": ""
+  },
+  {
+    "id": "m001",
+    "name": "Shrek",
+    "franchise": "Shrek",
+    "category": "Movies",
+    "subcategory": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Shrek"
+    ],
+    "image": ""
+  },
+  {
+    "id": "m002",
+    "name": "Marty McFly",
+    "franchise": "Back to the Future",
+    "category": "Movies",
+    "subcategory": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Marty"
+    ],
+    "image": ""
+  },
+  {
+    "id": "t001",
+    "name": "Eleven",
+    "franchise": "Stranger Things",
+    "category": "TV Shows",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Jane Hopper",
+      "El"
+    ],
+    "image": ""
+  },
+  {
+    "id": "t002",
+    "name": "Wednesday Addams",
+    "franchise": "Wednesday",
+    "category": "TV Shows",
+    "subcategory": [
+      "Mystery",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Wednesday"
+    ],
+    "image": ""
+  },
+  {
+    "id": "g001",
+    "name": "Link",
+    "franchise": "The Legend of Zelda",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Hero of Hyrule"
+    ],
+    "image": ""
+  },
+  {
+    "id": "g002",
+    "name": "Lara Croft",
+    "franchise": "Tomb Raider",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Lara"
+    ],
+    "image": ""
+  },
+  {
+    "id": "c001",
+    "name": "Spider-Man",
+    "franchise": "Marvel",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Peter Parker",
+      "Spidey"
+    ],
+    "image": ""
+  },
+  {
+    "id": "c002",
+    "name": "Batman",
+    "franchise": "DC",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Mystery"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Bruce Wayne",
+      "The Dark Knight"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a1020",
+    "name": "Naruto Uzumaki",
+    "franchise": "Naruto",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Naruto"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1021",
+    "name": "Sasuke Uchiha",
+    "franchise": "Naruto",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Sasuke"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1022",
+    "name": "Sakura Haruno",
+    "franchise": "Naruto",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Sakura"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1023",
+    "name": "Kakashi Hatake",
+    "franchise": "Naruto",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Kakashi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1024",
+    "name": "Ichigo Kurosaki",
+    "franchise": "Bleach",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Ichigo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1025",
+    "name": "Rukia Kuchiki",
+    "franchise": "Bleach",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Rukia"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1026",
+    "name": "Tanjiro Kamado",
+    "franchise": "Demon Slayer",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Tanjiro"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1027",
+    "name": "Nezuko Kamado",
+    "franchise": "Demon Slayer",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Nezuko"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1028",
+    "name": "Zenitsu Agatsuma",
+    "franchise": "Demon Slayer",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Zenitsu"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1029",
+    "name": "Inosuke Hashibira",
+    "franchise": "Demon Slayer",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Inosuke"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1030",
+    "name": "Eren Yeager",
+    "franchise": "Attack on Titan",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Drama"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Eren"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1031",
+    "name": "Armin Arlert",
+    "franchise": "Attack on Titan",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Armin"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1032",
+    "name": "Levi Ackerman",
+    "franchise": "Attack on Titan",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Levi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1033",
+    "name": "Denji",
+    "franchise": "Chainsaw Man",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Horror"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Denji"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1034",
+    "name": "Power",
+    "franchise": "Chainsaw Man",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Power"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1035",
+    "name": "Yuji Itadori",
+    "franchise": "Jujutsu Kaisen",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Yuji"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1036",
+    "name": "Megumi Fushiguro",
+    "franchise": "Jujutsu Kaisen",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Megumi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1037",
+    "name": "Nobara Kugisaki",
+    "franchise": "Jujutsu Kaisen",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Nobara"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1038",
+    "name": "Kento Nanami",
+    "franchise": "Jujutsu Kaisen",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Nanami"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1039",
+    "name": "Yuta Okkotsu",
+    "franchise": "Jujutsu Kaisen 0",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Yuta"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1040",
+    "name": "Light Yagami",
+    "franchise": "Death Note",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Mystery"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Light"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1041",
+    "name": "L",
+    "franchise": "Death Note",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Mystery"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "L"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1042",
+    "name": "Ryuk",
+    "franchise": "Death Note",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Supernatural"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Ryuk"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1043",
+    "name": "Edward Elric",
+    "franchise": "Fullmetal Alchemist: Brotherhood",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Edward"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1044",
+    "name": "Alphonse Elric",
+    "franchise": "Fullmetal Alchemist: Brotherhood",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Alphonse"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1045",
+    "name": "Gon Freecss",
+    "franchise": "Hunter x Hunter",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Gon"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1046",
+    "name": "Killua Zoldyck",
+    "franchise": "Hunter x Hunter",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Killua"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1047",
+    "name": "Kurapika",
+    "franchise": "Hunter x Hunter",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kurapika"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1048",
+    "name": "Hisoka",
+    "franchise": "Hunter x Hunter",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Hisoka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1049",
+    "name": "Katsuki Bakugo",
+    "franchise": "My Hero Academia",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Bakugo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1050",
+    "name": "Izuku Midoriya",
+    "franchise": "My Hero Academia",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Deku",
+      "Izuku"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1051",
+    "name": "Shoto Todoroki",
+    "franchise": "My Hero Academia",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Todoroki"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1052",
+    "name": "Ochaco Uraraka",
+    "franchise": "My Hero Academia",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Romance"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Uraraka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1053",
+    "name": "Denki Kaminari",
+    "franchise": "My Hero Academia",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kaminari"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1054",
+    "name": "All Might",
+    "franchise": "My Hero Academia",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Superhero"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Toshinori"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1055",
+    "name": "Natsu Dragneel",
+    "franchise": "Fairy Tail",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Natsu"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1056",
+    "name": "Lucy Heartfilia",
+    "franchise": "Fairy Tail",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Lucy"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1057",
+    "name": "Erza Scarlet",
+    "franchise": "Fairy Tail",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Erza"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1058",
+    "name": "Gray Fullbuster",
+    "franchise": "Fairy Tail",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Gray"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1059",
+    "name": "Kirito",
+    "franchise": "Sword Art Online",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Kazuto Kirigaya"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1060",
+    "name": "Asuna Yuuki",
+    "franchise": "Sword Art Online",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Asuna"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1061",
+    "name": "Sinon",
+    "franchise": "Sword Art Online II",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Shino Asada"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1062",
+    "name": "Klein",
+    "franchise": "Sword Art Online",
+    "category": "Anime",
+    "subcategory": [
+      "Adventure",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Tsuboi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1063",
+    "name": "Rimuru Tempest",
+    "franchise": "That Time I Got Reincarnated as a Slime",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Rimuru"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1064",
+    "name": "Benimaru",
+    "franchise": "That Time I Got Reincarnated as a Slime",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Benimaru"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1065",
+    "name": "Subaru Natsuki",
+    "franchise": "Re:Zero",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Drama",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Subaru"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1066",
+    "name": "Emilia",
+    "franchise": "Re:Zero",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Emilia"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1067",
+    "name": "Rem",
+    "franchise": "Re:Zero",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Romance",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Rem"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1068",
+    "name": "Ram",
+    "franchise": "Re:Zero",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Ram"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1069",
+    "name": "Kazuma Satou",
+    "franchise": "KonoSuba",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Kazuma"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1070",
+    "name": "Aqua",
+    "franchise": "KonoSuba",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Comedy",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Aqua"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1071",
+    "name": "Megumin",
+    "franchise": "KonoSuba",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Comedy",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Megumin"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1072",
+    "name": "Darkness",
+    "franchise": "KonoSuba",
+    "category": "Anime",
+    "subcategory": [
+      "Isekai",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Lalatina"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1073",
+    "name": "Yor Forger",
+    "franchise": "Spy x Family",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Yor"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1074",
+    "name": "Loid Forger",
+    "franchise": "Spy x Family",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Loid",
+      "Twilight"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1075",
+    "name": "Kaguya Shinomiya",
+    "franchise": "Kaguya-sama: Love Is War",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Comedy",
+      "Shojo"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kaguya"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1076",
+    "name": "Miyuki Shirogane",
+    "franchise": "Kaguya-sama: Love Is War",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Shirogane"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1077",
+    "name": "Marin Kitagawa",
+    "franchise": "My Dress-Up Darling",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Marin"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1078",
+    "name": "Sakuta Azusagawa",
+    "franchise": "Rascal Does Not Dream of Bunny Girl Senpai",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Sakuta"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1079",
+    "name": "Mai Sakurajima",
+    "franchise": "Rascal Does Not Dream of Bunny Girl Senpai",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Drama"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Mai"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1080",
+    "name": "Kyo Sohma",
+    "franchise": "Fruits Basket",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Shojo",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kyo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1081",
+    "name": "Yuki Sohma",
+    "franchise": "Fruits Basket",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Shojo"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Yuki"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1082",
+    "name": "Zero Two",
+    "franchise": "Darling in the Franxx",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Sci-Fi"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "002"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1083",
+    "name": "Hiro",
+    "franchise": "Darling in the Franxx",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Sci-Fi"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Hiro"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1084",
+    "name": "Violet Evergarden",
+    "franchise": "Violet Evergarden",
+    "category": "Anime",
+    "subcategory": [
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Violet"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1085",
+    "name": "Lelouch Lamperouge",
+    "franchise": "Code Geass",
+    "category": "Anime",
+    "subcategory": [
+      "Mecha",
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Lelouch"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1086",
+    "name": "C.C.",
+    "franchise": "Code Geass",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "C2"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1087",
+    "name": "Sailor Moon",
+    "franchise": "Sailor Moon",
+    "category": "Anime",
+    "subcategory": [
+      "Shojo",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Usagi Tsukino"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1088",
+    "name": "Rei Hino",
+    "franchise": "Sailor Moon",
+    "category": "Anime",
+    "subcategory": [
+      "Shojo",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Sailor Mars"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a1089",
+    "name": "Usopp",
+    "franchise": "One Piece",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Adventure",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Usopp"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2001",
+    "name": "Goku",
+    "franchise": "Dragon Ball",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Goku"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2002",
+    "name": "Vegeta",
+    "franchise": "Dragon Ball",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Vegeta"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2003",
+    "name": "Piccolo",
+    "franchise": "Dragon Ball",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Piccolo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2004",
+    "name": "Bulma",
+    "franchise": "Dragon Ball",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Bulma"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2005",
+    "name": "Trunks",
+    "franchise": "Dragon Ball",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Trunks"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2006",
+    "name": "Jotaro Kujo",
+    "franchise": "JoJo's Bizarre Adventure",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Jotaro"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2007",
+    "name": "Dio Brando",
+    "franchise": "JoJo's Bizarre Adventure",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Dio"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2008",
+    "name": "Joseph Joestar",
+    "franchise": "JoJo's Bizarre Adventure",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Comedy"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Joseph"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2009",
+    "name": "Soma Yukihira",
+    "franchise": "Food Wars!",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Slice of Life"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Soma"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2010",
+    "name": "Shigeo Kageyama",
+    "franchise": "Mob Psycho 100",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Mob"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2011",
+    "name": "Reigen Arataka",
+    "franchise": "Mob Psycho 100",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Reigen"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2012",
+    "name": "Saitama",
+    "franchise": "One-Punch Man",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Saitama"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2013",
+    "name": "Genos",
+    "franchise": "One-Punch Man",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Genos"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2014",
+    "name": "Maka Albarn",
+    "franchise": "Soul Eater",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Maka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2015",
+    "name": "Soul Evans",
+    "franchise": "Soul Eater",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Soul"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2016",
+    "name": "Inuyasha",
+    "franchise": "Inuyasha",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Inuyasha"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2017",
+    "name": "Kagome Higurashi",
+    "franchise": "Inuyasha",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kagome"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2018",
+    "name": "Kenshin Himura",
+    "franchise": "Rurouni Kenshin",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kenshin"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2019",
+    "name": "Vash the Stampede",
+    "franchise": "Trigun",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Action"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Vash"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2020",
+    "name": "Spike Spiegel",
+    "franchise": "Cowboy Bebop",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Spike"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2021",
+    "name": "Faye Valentine",
+    "franchise": "Cowboy Bebop",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Faye"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2022",
+    "name": "Shinji Ikari",
+    "franchise": "Neon Genesis Evangelion",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Shinji"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2023",
+    "name": "Asuka Langley",
+    "franchise": "Neon Genesis Evangelion",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Asuka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2024",
+    "name": "Shinichi Kudo",
+    "franchise": "Detective Conan",
+    "category": "Anime",
+    "subcategory": [
+      "Mystery"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Conan"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2025",
+    "name": "Ran Mouri",
+    "franchise": "Detective Conan",
+    "category": "Anime",
+    "subcategory": [
+      "Mystery"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Ran"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2026",
+    "name": "Eikichi Onizuka",
+    "franchise": "Great Teacher Onizuka",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Slice of Life"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Onizuka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2027",
+    "name": "Haruhi Suzumiya",
+    "franchise": "The Melancholy of Haruhi Suzumiya",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Haruhi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2028",
+    "name": "Yuki Nagato",
+    "franchise": "The Melancholy of Haruhi Suzumiya",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Yuki"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2029",
+    "name": "Taiga Aisaka",
+    "franchise": "Toradora!",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Taiga"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2030",
+    "name": "Ryuuji Takasu",
+    "franchise": "Toradora!",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Ryuuji"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2031",
+    "name": "Tomoya Okazaki",
+    "franchise": "Clannad",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Tomoya"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2032",
+    "name": "Nagisa Furukawa",
+    "franchise": "Clannad",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Nagisa"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2033",
+    "name": "Okabe Rintaro",
+    "franchise": "Steins;Gate",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Okabe"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2034",
+    "name": "Kurisu Makise",
+    "franchise": "Steins;Gate",
+    "category": "Anime",
+    "subcategory": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kurisu"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2035",
+    "name": "Madoka Kaname",
+    "franchise": "Puella Magi Madoka Magica",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Madoka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2036",
+    "name": "Homura Akemi",
+    "franchise": "Puella Magi Madoka Magica",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Drama"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Homura"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2037",
+    "name": "Asta",
+    "franchise": "Black Clover",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Asta"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2038",
+    "name": "Yuno",
+    "franchise": "Black Clover",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Yuno"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2039",
+    "name": "Noelle Silva",
+    "franchise": "Black Clover",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Noelle"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2040",
+    "name": "Yami Sukehiro",
+    "franchise": "Black Clover",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Yami"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2041",
+    "name": "Shinra Kusakabe",
+    "franchise": "Fire Force",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Shinra"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2042",
+    "name": "Arthur Boyle",
+    "franchise": "Fire Force",
+    "category": "Anime",
+    "subcategory": [
+      "Shonen",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Arthur"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2043",
+    "name": "Miyamura Izumi",
+    "franchise": "Horimiya",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Miyamura"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2044",
+    "name": "Kyoko Hori",
+    "franchise": "Horimiya",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Hori"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2045",
+    "name": "Kotarou Azumi",
+    "franchise": "Tsuki ga Kirei",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Slice of Life"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Kotarou"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2046",
+    "name": "Chisato Nishikigi",
+    "franchise": "Lycoris Recoil",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Slice of Life"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Chisato"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2047",
+    "name": "Takina Inoue",
+    "franchise": "Lycoris Recoil",
+    "category": "Anime",
+    "subcategory": [
+      "Action",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Takina"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2049",
+    "name": "Bond Forger",
+    "franchise": "Spy x Family",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Bond"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2050",
+    "name": "Thorfinn",
+    "franchise": "Vinland Saga",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Thorfinn"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2051",
+    "name": "Askeladd",
+    "franchise": "Vinland Saga",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Drama"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Askeladd"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2052",
+    "name": "Ken Kaneki",
+    "franchise": "Tokyo Ghoul",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Horror"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kaneki"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2053",
+    "name": "Touka Kirishima",
+    "franchise": "Tokyo Ghoul",
+    "category": "Anime",
+    "subcategory": [
+      "Seinen",
+      "Horror"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Touka"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2054",
+    "name": "Gintoki Sakata",
+    "franchise": "Gintama",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Gintoki"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2055",
+    "name": "Kagura",
+    "franchise": "Gintama",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Kagura"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2056",
+    "name": "Koro-sensei",
+    "franchise": "Assassination Classroom",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Koro-sensei"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2057",
+    "name": "Nagisa Shiota",
+    "franchise": "Assassination Classroom",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Nagisa"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2058",
+    "name": "Rin Okumura",
+    "franchise": "Blue Exorcist",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Rin"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2059",
+    "name": "Yato",
+    "franchise": "Noragami",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Yato"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2060",
+    "name": "Hiyori Iki",
+    "franchise": "Noragami",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Hiyori"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2061",
+    "name": "Kousei Arima",
+    "franchise": "Your Lie in April",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kousei"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2062",
+    "name": "Kaori Miyazono",
+    "franchise": "Your Lie in April",
+    "category": "Anime",
+    "subcategory": [
+      "Romance",
+      "Drama"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Kaori"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2064",
+    "name": "Tobio Kageyama",
+    "franchise": "Haikyu!!",
+    "category": "Anime",
+    "subcategory": [
+      "Sports",
+      "Shonen"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kageyama"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2065",
+    "name": "Kuroo Tetsuro",
+    "franchise": "Haikyu!!",
+    "category": "Anime",
+    "subcategory": [
+      "Sports"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Kuroo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2066",
+    "name": "Sakuragi Hanamichi",
+    "franchise": "Slam Dunk",
+    "category": "Anime",
+    "subcategory": [
+      "Sports",
+      "Comedy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Sakuragi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2067",
+    "name": "Ryota Miyagi",
+    "franchise": "The First Slam Dunk",
+    "category": "Anime",
+    "subcategory": [
+      "Sports"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Ryota"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2068",
+    "name": "Seiya Kanie",
+    "franchise": "Amagi Brilliant Park",
+    "category": "Anime",
+    "subcategory": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Seiya"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2069",
+    "name": "Holo",
+    "franchise": "Spice and Wolf",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Holo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2070",
+    "name": "Lawrence Kraft",
+    "franchise": "Spice and Wolf",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Hard",
+    "aliases": [
+      "Lawrence"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2071",
+    "name": "Chihiro Ogino",
+    "franchise": "Spirited Away",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Chihiro"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2072",
+    "name": "Howl",
+    "franchise": "Howl's Moving Castle",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Romance"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Howl"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2073",
+    "name": "San",
+    "franchise": "Princess Mononoke",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "San"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "a2074",
+    "name": "Ponyo",
+    "franchise": "Ponyo",
+    "category": "Anime",
+    "subcategory": [
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Ponyo"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2075",
+    "name": "SpongeBob SquarePants",
+    "franchise": "SpongeBob SquarePants",
+    "category": "Western Animation",
+    "subcategory": [
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "SpongeBob"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2076",
+    "name": "Patrick Star",
+    "franchise": "SpongeBob SquarePants",
+    "category": "Western Animation",
+    "subcategory": [
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Patrick"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2077",
+    "name": "Squidward Tentacles",
+    "franchise": "SpongeBob SquarePants",
+    "category": "Western Animation",
+    "subcategory": [
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Squidward"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2078",
+    "name": "Steven Universe",
+    "franchise": "Steven Universe",
+    "category": "Western Animation",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Steven"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2079",
+    "name": "Garnet",
+    "franchise": "Steven Universe",
+    "category": "Western Animation",
+    "subcategory": [
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Garnet"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2080",
+    "name": "Finn the Human",
+    "franchise": "Adventure Time",
+    "category": "Western Animation",
+    "subcategory": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Finn"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2081",
+    "name": "Jake the Dog",
+    "franchise": "Adventure Time",
+    "category": "Western Animation",
+    "subcategory": [
+      "Adventure",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Jake"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "w2082",
+    "name": "Princess Bubblegum",
+    "franchise": "Adventure Time",
+    "category": "Western Animation",
+    "subcategory": [
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Bubblegum"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2083",
+    "name": "Elsa",
+    "franchise": "Frozen",
+    "category": "Movies",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Elsa"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2084",
+    "name": "Moana",
+    "franchise": "Moana",
+    "category": "Movies",
+    "subcategory": [
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Moana"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2085",
+    "name": "Hiccup",
+    "franchise": "How to Train Your Dragon",
+    "category": "Movies",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Hiccup"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2086",
+    "name": "Toothless",
+    "franchise": "How to Train Your Dragon",
+    "category": "Movies",
+    "subcategory": [
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Toothless"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2087",
+    "name": "Woody",
+    "franchise": "Toy Story",
+    "category": "Movies",
+    "subcategory": [
+      "Comedy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Woody"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2088",
+    "name": "Buzz Lightyear",
+    "franchise": "Toy Story",
+    "category": "Movies",
+    "subcategory": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Buzz"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2089",
+    "name": "Mirabel Madrigal",
+    "franchise": "Encanto",
+    "category": "Movies",
+    "subcategory": [
+      "Fantasy",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Mirabel"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "m2090",
+    "name": "Po",
+    "franchise": "Kung Fu Panda",
+    "category": "Movies",
+    "subcategory": [
+      "Comedy",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Po"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2091",
+    "name": "Sherlock Holmes",
+    "franchise": "Sherlock",
+    "category": "TV Shows",
+    "subcategory": [
+      "Mystery",
+      "Drama"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Sherlock"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2092",
+    "name": "Jim Hopper",
+    "franchise": "Stranger Things",
+    "category": "TV Shows",
+    "subcategory": [
+      "Drama",
+      "Mystery"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Hopper"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2093",
+    "name": "Dustin Henderson",
+    "franchise": "Stranger Things",
+    "category": "TV Shows",
+    "subcategory": [
+      "Sci-Fi",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Dustin"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2094",
+    "name": "Geralt of Rivia",
+    "franchise": "The Witcher",
+    "category": "TV Shows",
+    "subcategory": [
+      "Fantasy",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Geralt"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2096",
+    "name": "Enid Sinclair",
+    "franchise": "Wednesday",
+    "category": "TV Shows",
+    "subcategory": [
+      "Mystery",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Enid"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2097",
+    "name": "The Doctor",
+    "franchise": "Doctor Who",
+    "category": "TV Shows",
+    "subcategory": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Doctor"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "t2098",
+    "name": "Michael Scott",
+    "franchise": "The Office",
+    "category": "TV Shows",
+    "subcategory": [
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Michael"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2099",
+    "name": "Mario",
+    "franchise": "Super Mario",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Mario"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2100",
+    "name": "Luigi",
+    "franchise": "Super Mario",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Luigi"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2101",
+    "name": "Princess Zelda",
+    "franchise": "The Legend of Zelda",
+    "category": "Video Games",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Zelda"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2102",
+    "name": "Sonic",
+    "franchise": "Sonic the Hedgehog",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Sonic"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2103",
+    "name": "Kirby",
+    "franchise": "Kirby",
+    "category": "Video Games",
+    "subcategory": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Kirby"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2104",
+    "name": "Pikachu",
+    "franchise": "Pokémon",
+    "category": "Video Games",
+    "subcategory": [
+      "Fantasy",
+      "Adventure"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Pikachu"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2105",
+    "name": "Cloud Strife",
+    "franchise": "Final Fantasy VII",
+    "category": "Video Games",
+    "subcategory": [
+      "RPG",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Cloud"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "g2106",
+    "name": "Tifa Lockhart",
+    "franchise": "Final Fantasy VII",
+    "category": "Video Games",
+    "subcategory": [
+      "RPG",
+      "Fantasy"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "Tifa"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2107",
+    "name": "Superman",
+    "franchise": "DC Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Clark Kent"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2108",
+    "name": "Wonder Woman",
+    "franchise": "DC Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Diana"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2109",
+    "name": "Iron Man",
+    "franchise": "Marvel Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Sci-Fi"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Tony Stark"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2110",
+    "name": "Captain America",
+    "franchise": "Marvel Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Steve Rogers"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2111",
+    "name": "Black Panther",
+    "franchise": "Marvel Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Medium",
+    "aliases": [
+      "T'Challa"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2112",
+    "name": "The Flash",
+    "franchise": "DC Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Action"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Barry Allen"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  },
+  {
+    "id": "c2113",
+    "name": "Harley Quinn",
+    "franchise": "DC Comics",
+    "category": "Comics",
+    "subcategory": [
+      "Superhero",
+      "Comedy"
+    ],
+    "difficulty": "Easy",
+    "aliases": [
+      "Harley"
+    ],
+    "image": "",
+    "franchiseImage": ""
+  }
+]
