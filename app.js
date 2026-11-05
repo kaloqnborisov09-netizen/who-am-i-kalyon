@@ -1,6 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, updateDoc, onSnapshot, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 import { firebaseConfig } from "./firebase-config.js";
 
 const $ = id => document.getElementById(id);
@@ -67,19 +64,27 @@ function openRound(character){if(!character){toast("No characters in that collec
   $("chatLog").innerHTML="";$("chatInput").value="";document.querySelectorAll(".game-side .panel").forEach((p,i)=>{if(i===2)p.classList.toggle("hidden",mode==="solo");});$("questionPanelTitle").textContent=mode==="solo"?"ASK THE AI":"ASK EVERYONE";$("askBtn").textContent=mode==="solo"?"Ask AI":"Ask";$("gameDialog").showModal();$("gameMode").textContent=mode==="solo"?"SOLO ROUND":"ROOM ROUND";
   loadCharacterArtwork(character);
 }
-function normalize(s){return s.toLowerCase().replace(/[^a-z0-9]/g,"");}
-function checkGuess(value,answers){const v=normalize(value);return !!v&&answers.some(a=>normalize(a)===v);}
+function normalize(s){return String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");}
+function checkGuess(value,answers){const v=normalize(value);return !!v&&answers.filter(a=>typeof a==="string").some(a=>normalize(a)===v);}
 function guess(type){
  const field=type==="character"?"guessInput":"titleInput";
- const value=$(field).value.trim();if(!value)return toast("Type your guess first.");
+ const input=$(field);
+ if(!activeCharacter){toast("Start a round before guessing.");return;}
+ if(!input){console.error("Missing guess input:",field);return;}
+ const value=input.value.trim();if(!value){toast(type==="character"?"Type a character name first.":"Type a title first.");input.focus();return;}
  const answers=type==="character"?[activeCharacter.name,...(activeCharacter.aliases||[])]:[activeCharacter.franchise,...(activeCharacter.franchiseAliases||[])];
  if(checkGuess(value,answers)){
-   if(type==="character"&&!characterGuessAwarded){soloScore+=1;characterGuessAwarded=true;toast("Correct character! +1 point");}
-   else if(type==="title"&&!titleGuessAwarded){soloScore+=2;titleGuessAwarded=true;toast("Correct title! +2 points");}
-   else toast("You already earned points for that!");
+   const alreadyAwarded=type==="character"?characterGuessAwarded:titleGuessAwarded;
+   if(alreadyAwarded){toast("You already earned points for that!");return;}
+   if(type==="character"){soloScore+=1;characterGuessAwarded=true;toast("Correct character! +1 point");}
+   else{soloScore+=2;titleGuessAwarded=true;toast("Correct title! +2 points");}
    $("soloScore").textContent=`Score: ${soloScore}`;
-   $(field).disabled=true;
- }else toast("Not quite — unlimited guesses, keep trying!");
+   input.disabled=true;
+   input.placeholder="Correct! Start a new round to guess again.";
+ }else{
+   toast("Not quite — unlimited guesses, keep trying!");
+   input.select();
+ }
 }
 function answerSoloQuestion(question){
  const c=activeCharacter, q=question.toLowerCase();
@@ -120,6 +125,15 @@ async function initFirebase(){
   status.innerHTML="<i></i> Connecting…";
   status.classList.remove("online");
   try{
+    // Load Firebase lazily so a blocked/offline Firebase CDN never prevents the game UI from starting.
+    const [appMod, authMod, dbMod] = await Promise.all([
+      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"),
+      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"),
+      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js")
+    ]);
+    const { initializeApp } = appMod;
+    const { getAuth, signInAnonymously, onAuthStateChanged } = authMod;
+    const { getFirestore, doc, setDoc, getDoc, updateDoc, onSnapshot, collection, addDoc, serverTimestamp } = dbMod;
     app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);
     onAuthStateChanged(auth,u=>{
       user=u;
@@ -156,5 +170,5 @@ function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&am
 async function sendChat(){const msg=$("chatInput").value.trim();if(!msg)return;if(!roomId||!db||!user){toast("Join a multiplayer room to use live chat.");return;}try{await addDoc(collection(db,"rooms",roomId,"chat"),{uid:user.uid,message:msg,createdAt:serverTimestamp()});$("chatInput").value="";}catch(e){toast("Chat could not send. Check Firestore chat rules.");console.error("Send chat:",e);}}
 async function startSetup(e){e.preventDefault();const cat=$("categorySelect").value,sub=$("subSelect").value;$("setupDialog").close();if(mode==="room"){await createRoom();}else{ $("roomInfo").classList.add("hidden");openRound(chooseCharacter(cat,sub));}}
 $("createBtn").onclick=()=>showSetup("room");$("multiplayerBtn").onclick=()=>showSetup("room");$("soloBtn").onclick=()=>showSetup("solo");$("joinToggle").onclick=()=>$("joinPanel").classList.toggle("hidden");$("joinBtn").onclick=()=>joinRoom($("joinCode").value);$("startSetup").onclick=startSetup;$("categorySelect").onchange=updateSubcategories;
-$("guessCharacter").onclick=()=>guess("character");$("giveUpBtn").onclick=giveUp;$("guessInput").onkeydown=e=>{if(e.key==="Enter")guess("character");};$("titleInput").onkeydown=e=>{if(e.key==="Enter")guess("title");};$("questionInput").onkeydown=e=>{if(e.key==="Enter")askQuestion();};$("chatInput").onkeydown=e=>{if(e.key==="Enter")sendChat();};$("guessTitle").onclick=()=>guess("title");$("askBtn").onclick=askQuestion;$("sendChat").onclick=sendChat;$("closeGame").onclick=()=>{$("gameDialog").close();if(roomUnsub)roomUnsub();if(chatUnsub)chatUnsub();};$("howBtn").onclick=()=>$("howDialog").showModal();$("closeHow").onclick=()=>$("howDialog").close();$("newRound").onclick=()=>{if(mode==="solo"){ $("guessInput").disabled=false;$("titleInput").disabled=false;$("giveUpBtn").disabled=false;openRound(chooseCharacter($("categorySelect").value,$("subSelect").value));}else toast("Host-controlled round start is part of the next build step.");};$("copyCode").onclick=()=>navigator.clipboard.writeText(roomId).then(()=>toast("Room code copied!")).catch(()=>toast("Copy the code: "+roomId));
+$("guessCharacter").type="button";$("guessTitle").type="button";$("guessCharacter").addEventListener("click",e=>{e.preventDefault();guess("character");});$("giveUpBtn").onclick=giveUp;$("guessInput").onkeydown=e=>{if(e.key==="Enter")guess("character");};$("titleInput").onkeydown=e=>{if(e.key==="Enter")guess("title");};$("questionInput").onkeydown=e=>{if(e.key==="Enter")askQuestion();};$("chatInput").onkeydown=e=>{if(e.key==="Enter")sendChat();};$("guessTitle").addEventListener("click",e=>{e.preventDefault();guess("title");});$("askBtn").onclick=askQuestion;$("sendChat").onclick=sendChat;$("closeGame").onclick=()=>{$("gameDialog").close();if(roomUnsub)roomUnsub();if(chatUnsub)chatUnsub();};$("howBtn").onclick=()=>$("howDialog").showModal();$("closeHow").onclick=()=>$("howDialog").close();$("newRound").onclick=()=>{if(mode==="solo"){ $("guessInput").disabled=false;$("titleInput").disabled=false;$("giveUpBtn").disabled=false;openRound(chooseCharacter($("categorySelect").value,$("subSelect").value));}else toast("Host-controlled round start is part of the next build step.");};$("copyCode").onclick=()=>navigator.clipboard.writeText(roomId).then(()=>toast("Room code copied!")).catch(()=>toast("Copy the code: "+roomId));
 renderCategories();updateSubcategories();await loadCatalog();await initFirebase();
