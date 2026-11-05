@@ -13,7 +13,7 @@ const categories = [
  ["Comics","Marvel · DC · Superhero · Manga-style comics"]
 ];
 const subcategories = ["All","Isekai","Shonen","Romance","Shojo","Seinen","Fantasy","Action","Comedy","Slice of Life","Horror","Sports","Adventure","Mystery","Sci-Fi","Drama","Superhero","RPG"];
-let selectedCategory="All", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
+let soloScore=0, characterGuessAwarded=false, titleGuessAwarded=false;\nlet selectedCategory="All", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
 const toast = msg => { $("toast").textContent=msg; $("toast").classList.add("show"); setTimeout(()=>$("toast").classList.remove("show"),2600); };
 function showSetup(kind){mode=kind;$("setupTitle").textContent=kind==="room"?"Set up your room":"Set up solo mode";$("setupDialog").showModal();}
 function renderCategories(){ $("categoryGrid").innerHTML=categories.map(([name,desc])=>`<button class="category ${selectedCategory===name?"active":""}" data-cat="${name}"><b>${name}</b><small>${desc}</small></button>`).join(""); document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{selectedCategory=b.dataset.cat;$("categorySelect").value=selectedCategory;renderCategories();});}
@@ -43,7 +43,7 @@ async function loadCharacterArtwork(character){
     if(!character.image){
       try{
         const res=await fetch(`https://api.jikan.moe/v4/characters?q=${encodeURIComponent(character.name)}&limit=5`);
-        if(res.ok){const data=await res.json();const hit=(data.data||[]).find(x=>x.name?.toLowerCase()===character.name.toLowerCase())||(data.data||[])[0];
+        if(res.ok){const data=await res.json();const hit=(data.data||[]).find(x=>normalize(x.name||"")===normalize(character.name));
           const portrait=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url;
           if(portrait&&current())setArt(characterBox,portrait,character.name);
         }
@@ -51,7 +51,7 @@ async function loadCharacterArtwork(character){
     }
     if(!character.franchiseImage){
       try{const res=await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(character.franchise)}&limit=1`);
-        if(res.ok){const data=await res.json(),hit=data.data?.[0];const poster=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url;if(poster&&current())setArt(seriesBox,poster,character.franchise);}
+        if(res.ok){const data=await res.json(),hit=(data.data||[]).find(x=>normalize(x.title||"")===normalize(character.franchise)||normalize(x.title_english||"")===normalize(character.franchise));const poster=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url;if(poster&&current())setArt(seriesBox,poster,character.franchise);}
       }catch(e){console.info("Series artwork lookup unavailable.");}
     }
   }else{
@@ -59,17 +59,61 @@ async function loadCharacterArtwork(character){
     try{const poster=character.franchiseImage||await commonsArtwork(`${character.franchise} poster logo`);if(poster&&current())setArt(seriesBox,poster,character.franchise);}catch(e){console.info("Title artwork lookup unavailable.");}
   }
 }
-function openRound(character){if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt")
+function openRound(character){if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt")
   $("mysteryName").textContent="Hidden from you";
   $("mysteryHint").textContent=`Category: ${character.category} · Difficulty: ${character.difficulty}`;
   $("guessInput").value="";$("titleInput").value="";$("questionList").innerHTML='<p class="muted">Questions will appear here.</p>';
-  $("chatLog").innerHTML="";$("gameDialog").showModal();$("gameMode").textContent=mode==="solo"?"SOLO ROUND":"ROOM ROUND";
+  $("chatLog").innerHTML="";$("chatInput").value="";document.querySelectorAll(".game-side .panel").forEach((p,i)=>{if(i===2)p.classList.toggle("hidden",mode==="solo");});$("questionPanelTitle").textContent=mode==="solo"?"ASK THE AI":"ASK EVERYONE";$("askBtn").textContent=mode==="solo"?"Ask AI":"Ask";$("gameDialog").showModal();$("gameMode").textContent=mode==="solo"?"SOLO ROUND":"ROOM ROUND";
   loadCharacterArtwork(character);
 }
 function normalize(s){return s.toLowerCase().replace(/[^a-z0-9]/g,"");}
 function checkGuess(value,answers){const v=normalize(value);return !!v&&answers.some(a=>normalize(a)===v);}
-function guess(type){const field=type==="character"?"guessInput":"titleInput";const value=$(field).value.trim();if(!value)return toast("Type your guess first.");const answers=type==="character"?[activeCharacter.name,...activeCharacter.aliases]:[activeCharacter.franchise];if(checkGuess(value,answers)){toast(type==="character"?"Correct! +1 point":"Correct title! +2 points");$(field).disabled=true;}else toast("Not quite — keep thinking!");}
-function askQuestion(){const q=$("questionInput").value.trim();if(!q)return toast("Write a question first.");const el=document.createElement("div");el.className="question-item";el.textContent=q+" — waiting for answers";$("questionList").prepend(el);$("questionInput").value="";if(mode==="solo")toast("In solo mode, imagine how the character would answer.");}
+function guess(type){
+ const field=type==="character"?"guessInput":"titleInput";
+ const value=$(field).value.trim();if(!value)return toast("Type your guess first.");
+ const answers=type==="character"?[activeCharacter.name,...(activeCharacter.aliases||[])]:[activeCharacter.franchise,...(activeCharacter.franchiseAliases||[])];
+ if(checkGuess(value,answers)){
+   if(type==="character"&&!characterGuessAwarded){soloScore+=1;characterGuessAwarded=true;toast("Correct character! +1 point");}
+   else if(type==="title"&&!titleGuessAwarded){soloScore+=2;titleGuessAwarded=true;toast("Correct title! +2 points");}
+   else toast("You already earned points for that!");
+   $("soloScore").textContent=`Score: ${soloScore}`;
+   $(field).disabled=true;
+ }else toast("Not quite — unlimited guesses, keep trying!");
+}
+function answerSoloQuestion(question){
+ const c=activeCharacter, q=question.toLowerCase();
+ const tags=[...(c.subcategory||[]),c.category,c.difficulty].map(x=>String(x).toLowerCase());
+ if(/(what|which) (anime|show|series|movie|game|franchise|title)/.test(q))return `The title is ${c.franchise}.`;
+ if(q.includes("category"))return `This character is in ${c.category}.`;
+ if(q.includes("difficult")||q.includes("difficulty"))return `Difficulty: ${c.difficulty}.`;
+ if(q.includes("genre")||q.includes("type")||q.includes("kind"))return `Known tags: ${(c.subcategory||[]).join(", ")||"not listed"}.`;
+ if(q.includes("name")||q.includes("who is"))return "I can't reveal the character's name—that's what you're guessing!";
+ const matched=tags.find(t=>q.includes(t));
+ if(matched){
+   if(/\b(is|are|does|has|can|have|wear|live|from|in)\b/.test(q))return `Based on the character data, yes: “${matched}” is listed.`;
+ }
+ if(q.startsWith("is ")||q.startsWith("does ")||q.startsWith("has ")||q.startsWith("can ")||q.startsWith("are ")||q.startsWith("do "))
+   return "I don't have reliable information to answer that from this character's database. Try asking about the category, title, or listed tags.";
+ return "I can answer using the character's stored category, title, difficulty, and tags. Try a yes/no question or ask about those details.";
+}
+function askQuestion(){
+ const q=$("questionInput").value.trim();if(!q)return toast("Write a question first.");
+ const el=document.createElement("div");el.className="question-item";
+ if(mode==="solo"){el.textContent=`You: ${q} — AI: ${answerSoloQuestion(q)}`;}
+ else{el.textContent=q+" — waiting for answers";}
+ $("questionList").prepend(el);$("questionInput").value="";
+ if(mode==="room")toast("Question sent to the room.");
+}
+function giveUp(){
+ if(!activeCharacter)return;
+ $("mysteryName").textContent=activeCharacter.name;
+ $("mysteryHint").textContent=`Answer: ${activeCharacter.name} · Title: ${activeCharacter.franchise}`;
+ setArt($("mysteryArt"),activeCharacter.image||"",activeCharacter.name);
+ $("seriesArtLabel").textContent=(activeCharacter.franchise||"Series").toUpperCase();
+ setArt($("seriesArt"),activeCharacter.franchiseImage||"",activeCharacter.franchise);
+ $("guessInput").disabled=true;$("titleInput").disabled=true;$("giveUpBtn").disabled=true;
+ toast("Round revealed. No points earned for giving up.");
+}
 async function initFirebase(){try{app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);await signInAnonymously(auth);onAuthStateChanged(auth,u=>{user=u;if(u){$("connection").innerHTML="<i></i> Connected";$("connection").classList.add("online");}});}catch(e){$("connection").innerHTML="<i></i> Setup needed";console.warn("Firebase setup:",e);}}
 function makeCode(){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return Array.from({length:6},()=>chars[Math.floor(Math.random()*chars.length)]).join("");}
 async function createRoom(){if(!db||!user)return toast("Enable Anonymous Authentication and Firestore first (see README).");const code=makeCode();const ref=doc(db,"rooms",code);const settings={host:user.uid,code,players:[{uid:user.uid,name:"Host",score:0}],category:$("categorySelect").value,subcategory:$("subSelect").value,maxPlayers:Number($("playerLimit").value),roundLength:Number($("roundLength").value),status:"lobby",createdAt:serverTimestamp()};try{await setDoc(ref,settings);roomId=code;roomData=settings;$("roomInfo").classList.remove("hidden");$("roomCodeDisplay").textContent=code;$("gameHeading").textContent="Waiting for friends";$("gameMode").textContent="MULTIPLAYER ROOM";$("mysteryArt").textContent="⌛";$("mysteryName").textContent="Room lobby";$("mysteryHint").textContent="Share the code with your friends. Lobby syncing is active."; $("gameDialog").showModal();listenRoom();}catch(e){toast("Could not create room. Check Firebase rules.");console.error(e);}}
@@ -95,5 +139,5 @@ function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&am
 async function sendChat(){const msg=$("chatInput").value.trim();if(!msg)return;if(!roomId||!db||!user){toast("Join a multiplayer room to use live chat.");return;}try{await addDoc(collection(db,"rooms",roomId,"chat"),{uid:user.uid,message:msg,createdAt:serverTimestamp()});$("chatInput").value="";}catch(e){toast("Chat could not send. Check Firestore chat rules.");console.error("Send chat:",e);}}
 async function startSetup(e){e.preventDefault();const cat=$("categorySelect").value,sub=$("subSelect").value;$("setupDialog").close();if(mode==="room"){await createRoom();}else{ $("roomInfo").classList.add("hidden");openRound(chooseCharacter(cat,sub));}}
 $("createBtn").onclick=()=>showSetup("room");$("multiplayerBtn").onclick=()=>showSetup("room");$("soloBtn").onclick=()=>showSetup("solo");$("joinToggle").onclick=()=>$("joinPanel").classList.toggle("hidden");$("joinBtn").onclick=()=>joinRoom($("joinCode").value);$("startSetup").onclick=startSetup;$("categorySelect").onchange=updateSubcategories;
-$("guessCharacter").onclick=()=>guess("character");$("guessTitle").onclick=()=>guess("title");$("askBtn").onclick=askQuestion;$("sendChat").onclick=sendChat;$("closeGame").onclick=()=>{$("gameDialog").close();if(roomUnsub)roomUnsub();if(chatUnsub)chatUnsub();};$("howBtn").onclick=()=>$("howDialog").showModal();$("closeHow").onclick=()=>$("howDialog").close();$("newRound").onclick=()=>{if(mode==="solo")openRound(chooseCharacter($("categorySelect").value,$("subSelect").value));else toast("Host-controlled round start is part of the next build step.");};$("copyCode").onclick=()=>navigator.clipboard.writeText(roomId).then(()=>toast("Room code copied!")).catch(()=>toast("Copy the code: "+roomId));
+$("guessCharacter").onclick=()=>guess("character");$("giveUpBtn").onclick=giveUp;$("guessInput").onkeydown=e=>{if(e.key==="Enter")guess("character");};$("titleInput").onkeydown=e=>{if(e.key==="Enter")guess("title");};$("questionInput").onkeydown=e=>{if(e.key==="Enter")askQuestion();};$("chatInput").onkeydown=e=>{if(e.key==="Enter")sendChat();};$("guessTitle").onclick=()=>guess("title");$("askBtn").onclick=askQuestion;$("sendChat").onclick=sendChat;$("closeGame").onclick=()=>{$("gameDialog").close();if(roomUnsub)roomUnsub();if(chatUnsub)chatUnsub();};$("howBtn").onclick=()=>$("howDialog").showModal();$("closeHow").onclick=()=>$("howDialog").close();$("newRound").onclick=()=>{if(mode==="solo"){ $("guessInput").disabled=false;$("titleInput").disabled=false;$("giveUpBtn").disabled=false;openRound(chooseCharacter($("categorySelect").value,$("subSelect").value));}else toast("Host-controlled round start is part of the next build step.");};$("copyCode").onclick=()=>navigator.clipboard.writeText(roomId).then(()=>toast("Room code copied!")).catch(()=>toast("Copy the code: "+roomId));
 renderCategories();updateSubcategories();await loadCatalog();await initFirebase();
