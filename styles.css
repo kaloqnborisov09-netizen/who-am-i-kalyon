@@ -18,3 +18,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .guess-feedback.wrong{color:#fecaca;background:linear-gradient(110deg,#7f1d1d66,#ef444433);border:1px solid #f87171; text-shadow:0 0 15px #ef444488}
 .guess-feedback.winner{color:#fef08a;background:linear-gradient(110deg,#854d0e88,#eab30833);border:1px solid #facc15;text-shadow:0 0 18px #facc15;box-shadow:0 0 28px #eab30833}
 @keyframes guess-pop{0%{opacity:0;transform:scale(.55) rotate(-4deg)}35%{opacity:1;transform:scale(1.12) rotate(2deg)}55%{transform:scale(.96) rotate(0)}75%{transform:scale(1.03)}100%{opacity:1;transform:scale(1)}}
+
+/* Anime-only first edition: use a clean backdrop instead of the old background image. */
+body{background:radial-gradient(ellipse at 50% 0%,#302052 0%,#100b20 48%,#080611 100%) fixed!important}
+body::before{background:linear-gradient(180deg,rgba(8,5,20,.08),rgba(8,5,20,.3) 60%,rgba(8,5,20,.55))!important}
