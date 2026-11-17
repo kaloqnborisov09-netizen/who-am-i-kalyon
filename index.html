@@ -17,16 +17,16 @@
     <section class="hero">
       <div class="eyebrow">THE CHARACTER GUESSING GAME</div>
       <h1>WHO AM <em>I?</em></h1>
-      <p>Pick a category. Join your friends. Figure out who everyone is.</p>
+      <p>Pick an anime. Join your friends. Figure out who everyone is.</p>
       <div class="hero-actions"><button class="primary" id="createBtn">Create a room <span>↗</span></button><button class="secondary" id="joinToggle">Join with code</button></div>
       <div id="joinPanel" class="join-panel hidden"><input id="joinCode" maxlength="6" placeholder="6-CHARACTER CODE" autocomplete="off"><button class="primary small" id="joinBtn">Join room</button></div>
     </section>
     <section class="mode-grid">
-      <article class="mode-card featured"><div class="card-icon">✦</div><div class="card-kicker">PLAY ON YOUR OWN</div><h2>Solo mode</h2><p>Practice with a random character from your chosen collection.</p><button class="text-btn" id="soloBtn">Play solo <span>→</span></button></article>
+      <article class="mode-card featured"><div class="card-icon">✦</div><div class="card-kicker">PLAY ON YOUR OWN</div><h2>Solo mode</h2><p>Practice with a random character from your chosen anime collection.</p><button class="text-btn" id="soloBtn">Play solo <span>→</span></button></article>
       <article class="mode-card"><div class="card-icon">♧</div><div class="card-kicker">PLAY WITH FRIENDS</div><h2>Multiplayer</h2><p>Make a room and share its code with 1–9 friends.</p><button class="text-btn" id="multiplayerBtn">Create a room <span>→</span></button></article>
     </section>
     <section class="collection">
-      <div><div class="eyebrow">YOUR UNIVERSE</div><h2>Choose your world</h2><p>Mix categories or keep every round in one universe.</p></div>
+      <div><div class="eyebrow">YOUR UNIVERSE</div><h2>Choose your anime</h2><p>Start with anime only. More worlds can be added later.</p></div>
       <div class="category-grid" id="categoryGrid"></div>
     </section>
     <footer>WHO AM I? — Created &amp; built by ChatGPT · Thought up by Kalyon</footer>
@@ -35,7 +35,7 @@
     <form method="dialog" id="setupForm">
       <button class="close" value="cancel" aria-label="Close">×</button>
       <div class="eyebrow">NEW GAME</div><h2 id="setupTitle">Set up your room</h2>
-      <label>Game category<select id="categorySelect"><option value="All">All worlds mixed</option><option>Anime</option><option>Western Animation</option><option>Movies</option><option>TV Shows</option><option>Video Games</option><option>Comics</option></select></label>
+      <label>Game category<select id="categorySelect"><option value="Anime">Anime</option></select></label>
       <label>Subcategory<select id="subSelect"><option value="All">All subcategories</option></select></label>
       <label>Players<select id="playerLimit"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></label>
       <label>Round length<select id="roundLength"><option value="180">3 minutes</option><option value="300" selected>5 minutes</option><option value="600">10 minutes</option><option value="0">No timer</option></select></label>
