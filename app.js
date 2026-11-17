@@ -2,22 +2,17 @@ import { firebaseConfig } from "./firebase-config.js";
 
 const $ = id => document.getElementById(id);
 const categories = [
- ["Anime","Isekai · Shonen · Romance · Shojo · Seinen · Fantasy · Action"],
- ["Western Animation","Cartoons · Adventure · Comedy · Fantasy"],
- ["Movies","Animation · Sci-Fi · Action · Comedy · Fantasy"],
- ["TV Shows","Drama · Mystery · Comedy · Sci-Fi · Fantasy"],
- ["Video Games","RPG · Adventure · Action · Indie · Fighting"],
- ["Comics","Marvel · DC · Superhero · Manga-style comics"]
+ ["Anime","Isekai · Shonen · Romance · Shojo · Seinen · Fantasy · Action · Sports · Mystery"]
 ];
 const subcategories = ["All","Isekai","Shonen","Romance","Shojo","Seinen","Fantasy","Action","Comedy","Slice of Life","Horror","Sports","Adventure","Mystery","Sci-Fi","Drama","Superhero","RPG"];
 let soloScore=0, characterGuessAwarded=false, titleGuessAwarded=false;
-let selectedCategory="All", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
+let selectedCategory="Anime", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
 const toast = msg => { $("toast").textContent=msg; $("toast").classList.add("show"); setTimeout(()=>$("toast").classList.remove("show"),2600); };
-function showSetup(kind){mode=kind;$("setupTitle").textContent=kind==="room"?"Set up your room":"Set up solo mode";$("setupDialog").showModal();}
+function showSetup(kind){mode=kind;$("setupTitle").textContent=kind==="room"?"Set up your room":"Set up solo mode";$("categorySelect").value="Anime";updateSubcategories();$("setupDialog").showModal();}
 function renderCategories(){ $("categoryGrid").innerHTML=categories.map(([name,desc])=>`<button class="category ${selectedCategory===name?"active":""}" data-cat="${name}"><b>${name}</b><small>${desc}</small></button>`).join(""); document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{selectedCategory=b.dataset.cat;$("categorySelect").value=selectedCategory;renderCategories();});}
 function updateSubcategories(){const c=$("categorySelect").value;const opts=c==="Anime"?["All","Isekai","Shonen","Romance","Shojo","Seinen","Fantasy","Action","Comedy","Slice of Life","Horror","Sports"]:subcategories;$("subSelect").innerHTML=opts.map(x=>`<option>${x}</option>`).join("");}
-async function loadCatalog(){try{const r=await fetch("./data/characters.json");catalog=await r.json();}catch(e){catalog=[];}}
-function chooseCharacter(cat,sub){let pool=catalog.filter(x=>(cat==="All"||x.category===cat)&&(sub==="All"||x.subcategory.includes(sub)));if(!pool.length)pool=catalog.filter(x=>cat==="All"||x.category===cat);return pool[Math.floor(Math.random()*pool.length)];}
+async function loadCatalog(){try{const r=await fetch("./data/characters.json");const data=await r.json();catalog=data.filter(x=>x.category==="Anime");}catch(e){catalog=[];}}
+function chooseCharacter(cat,sub){let pool=catalog.filter(x=>(sub==="All"||x.subcategory.includes(sub)));if(!pool.length)pool=catalog;return pool[Math.floor(Math.random()*pool.length)];}
 function setArt(container, url, alt){
   container.innerHTML="";
   if(url){const img=document.createElement("img");img.src=url;img.alt=alt;img.loading="lazy";img.onerror=()=>{container.innerHTML='<div class="art-placeholder">✦</div>';};container.append(img);}
@@ -260,4 +255,4 @@ async function sendChat(){const msg=$("chatInput").value.trim();if(!msg)return;i
 async function startSetup(e){e.preventDefault();const cat=$("categorySelect").value,sub=$("subSelect").value;$("setupDialog").close();if(mode==="room"){await createRoom();}else{ $("roomInfo").classList.add("hidden");openRound(chooseCharacter(cat,sub));}}
 $("createBtn").onclick=()=>showSetup("room");$("multiplayerBtn").onclick=()=>showSetup("room");$("soloBtn").onclick=()=>showSetup("solo");$("joinToggle").onclick=()=>$("joinPanel").classList.toggle("hidden");$("joinBtn").onclick=()=>joinRoom($("joinCode").value);$("startSetup").onclick=startSetup;$("categorySelect").onchange=updateSubcategories;
 $("guessCharacter").type="button";$("guessTitle").type="button";$("guessCharacter").addEventListener("click",e=>{e.preventDefault();guess("character");});$("giveUpBtn").onclick=giveUp;$("guessInput").onkeydown=e=>{if(e.key==="Enter")guess("character");};$("titleInput").onkeydown=e=>{if(e.key==="Enter")guess("title");};$("questionInput").onkeydown=e=>{if(e.key==="Enter")askQuestion();};$("chatInput").onkeydown=e=>{if(e.key==="Enter")sendChat();};$("guessTitle").addEventListener("click",e=>{e.preventDefault();guess("title");});$("askBtn").onclick=askQuestion;$("sendChat").onclick=sendChat;$("closeGame").onclick=()=>{$("gameDialog").close();if(roomUnsub)roomUnsub();if(chatUnsub)chatUnsub();};$("howBtn").onclick=()=>$("howDialog").showModal();$("closeHow").onclick=()=>$("howDialog").close();$("newRound").onclick=()=>{if(mode==="solo"){ $("guessInput").disabled=false;$("titleInput").disabled=false;$("giveUpBtn").disabled=false;openRound(chooseCharacter($("categorySelect").value,$("subSelect").value));}else toast("Host-controlled round start is part of the next build step.");};$("copyCode").onclick=()=>navigator.clipboard.writeText(roomId).then(()=>toast("Room code copied!")).catch(()=>toast("Copy the code: "+roomId));
-renderCategories();updateSubcategories();await loadCatalog();await initFirebase();
+$("categorySelect").value="Anime";renderCategories();updateSubcategories();await loadCatalog();await initFirebase();
