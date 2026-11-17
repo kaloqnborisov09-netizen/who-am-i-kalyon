@@ -7,6 +7,7 @@ const categories = [
 const subcategories = ["All","Isekai","Shonen","Romance","Shojo","Seinen","Fantasy","Action","Comedy","Slice of Life","Horror","Sports","Adventure","Mystery","Sci-Fi","Drama","Superhero","RPG"];
 let soloScore=0, characterGuessAwarded=false, titleGuessAwarded=false;
 let selectedCategory="Anime", catalog=[], app, auth, db, user=null, roomId=null, roomUnsub=null, chatUnsub=null, activeCharacter=null, mode="solo", roomData=null, timer=null;
+let doc, setDoc, getDoc, updateDoc, onSnapshot, collection, addDoc, serverTimestamp;
 const toast = msg => { $("toast").textContent=msg; $("toast").classList.add("show"); setTimeout(()=>$("toast").classList.remove("show"),2600); };
 function showSetup(kind){mode=kind;$("setupTitle").textContent=kind==="room"?"Set up your room":"Set up solo mode";$("categorySelect").value="Anime";updateSubcategories();$("setupDialog").showModal();}
 function renderCategories(){ $("categoryGrid").innerHTML=categories.map(([name,desc])=>`<button class="category ${selectedCategory===name?"active":""}" data-cat="${name}"><b>${name}</b><small>${desc}</small></button>`).join(""); document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{selectedCategory=b.dataset.cat;$("categorySelect").value=selectedCategory;renderCategories();});}
@@ -217,7 +218,7 @@ async function initFirebase(){
     ]);
     const { initializeApp } = appMod;
     const { getAuth, signInAnonymously, onAuthStateChanged } = authMod;
-    const { getFirestore, doc, setDoc, getDoc, updateDoc, onSnapshot, collection, addDoc, serverTimestamp } = dbMod;
+    ({ getFirestore, doc, setDoc, getDoc, updateDoc, onSnapshot, collection, addDoc, serverTimestamp } = dbMod);
     app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);
     onAuthStateChanged(auth,u=>{
       user=u;
