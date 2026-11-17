@@ -225,7 +225,8 @@ async function initFirebase(){
       if(u){status.innerHTML="<i></i> Multiplayer connected";status.classList.add("online");}
       else{status.innerHTML="<i></i> Solo ready · Multiplayer offline";status.classList.remove("online");}
     });
-    await signInAnonymously(auth);
+    const credential = await signInAnonymously(auth);
+    user = credential.user;
   }catch(e){
     user=null;status.innerHTML="<i></i> Solo ready · Multiplayer offline";status.classList.remove("online");
     console.warn("Firebase connection unavailable; solo mode remains usable:",e);
@@ -253,7 +254,7 @@ function listenRoom(){
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[c]));}
 async function sendChat(){const msg=$("chatInput").value.trim();if(!msg)return;if(!roomId||!db||!user){toast("Join a multiplayer room to use live chat.");return;}try{await addDoc(collection(db,"rooms",roomId,"chat"),{uid:user.uid,message:msg,createdAt:serverTimestamp()});$("chatInput").value="";}catch(e){toast("Chat could not send. Check Firestore chat rules.");console.error("Send chat:",e);}}
-async function startSetup(e){e.preventDefault();const cat=$("categorySelect").value,sub=$("subSelect").value;$("setupDialog").close();if(mode==="room"){await createRoom();}else{ $("roomInfo").classList.add("hidden");openRound(chooseCharacter(cat,sub));}}
-$("createBtn").onclick=()=>showSetup("room");$("multiplayerBtn").onclick=()=>showSetup("room");$("soloBtn").onclick=()=>showSetup("solo");$("joinToggle").onclick=()=>$("joinPanel").classList.toggle("hidden");$("joinBtn").onclick=()=>joinRoom($("joinCode").value);$("startSetup").onclick=startSetup;$("categorySelect").onchange=updateSubcategories;
+async function startSetup(e){e.preventDefault();const cat=$("categorySelect").value,sub=$("subSelect").value;if(mode==="room"){await createRoom();if(!roomId)return;}else{$("roomInfo").classList.add("hidden");openRound(chooseCharacter(cat,sub));}$("setupDialog").close();}
+$("createBtn").onclick=()=>showSetup("room");$("multiplayerBtn").onclick=()=>showSetup("room");$("soloBtn").onclick=()=>showSetup("solo");$("joinToggle").onclick=()=>$("joinPanel").classList.toggle("hidden");$("joinBtn").onclick=()=>joinRoom($("joinCode").value);$("setupForm").addEventListener("submit",startSetup);$("categorySelect").onchange=updateSubcategories;
 $("guessCharacter").type="button";$("guessTitle").type="button";$("guessCharacter").addEventListener("click",e=>{e.preventDefault();guess("character");});$("giveUpBtn").onclick=giveUp;$("guessInput").onkeydown=e=>{if(e.key==="Enter")guess("character");};$("titleInput").onkeydown=e=>{if(e.key==="Enter")guess("title");};$("questionInput").onkeydown=e=>{if(e.key==="Enter")askQuestion();};$("chatInput").onkeydown=e=>{if(e.key==="Enter")sendChat();};$("guessTitle").addEventListener("click",e=>{e.preventDefault();guess("title");});$("askBtn").onclick=askQuestion;$("sendChat").onclick=sendChat;$("closeGame").onclick=()=>{$("gameDialog").close();if(roomUnsub)roomUnsub();if(chatUnsub)chatUnsub();};$("howBtn").onclick=()=>$("howDialog").showModal();$("closeHow").onclick=()=>$("howDialog").close();$("newRound").onclick=()=>{if(mode==="solo"){ $("guessInput").disabled=false;$("titleInput").disabled=false;$("giveUpBtn").disabled=false;openRound(chooseCharacter($("categorySelect").value,$("subSelect").value));}else toast("Host-controlled round start is part of the next build step.");};$("copyCode").onclick=()=>navigator.clipboard.writeText(roomId).then(()=>toast("Room code copied!")).catch(()=>toast("Copy the code: "+roomId));
 $("categorySelect").value="Anime";renderCategories();updateSubcategories();await loadCatalog();await initFirebase();
