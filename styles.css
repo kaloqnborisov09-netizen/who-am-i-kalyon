@@ -109,3 +109,31 @@ button:disabled{cursor:not-allowed;opacity:.58}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* Keep both artwork panels on the left; move guessing details and controls right. */
+@media(min-width:851px){
+  .mystery-card{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(220px,.9fr);
+    grid-template-rows:auto auto auto auto auto auto;
+    column-gap:18px;
+    align-items:center;
+    text-align:left;
+  }
+  .mystery-card .mystery-art{grid-column:1;grid-row:1 / span 3;width:100%;height:clamp(230px,34vh,360px);margin:0}
+  .mystery-card .series-art{grid-column:1;grid-row:4;width:100%;margin:12px 0 0}
+  .mystery-card>.eyebrow{grid-column:2;grid-row:1;align-self:end}
+  .mystery-card>#mysteryName{grid-column:2;grid-row:2;margin:8px 0}
+  .mystery-card>#mysteryHint{grid-column:2;grid-row:3;margin:0 0 8px}
+  .mystery-card>#guessFeedback{grid-column:2;grid-row:4;width:100%}
+  .mystery-card>.guess-row:has(#guessInput){grid-column:2;grid-row:5;width:100%}
+  .mystery-card>.guess-row:has(#titleInput){grid-column:2;grid-row:6;width:100%}
+  .mystery-card>.guess-row:has(#giveUpBtn){grid-column:2;grid-row:7;width:100%}
+  .mystery-card>.guess-row input{min-width:0;width:100%}
+}
+@media(max-width:850px){
+  .mystery-card{display:block;text-align:center}
+  .mystery-card .mystery-art{height:clamp(210px,32vh,340px);margin-bottom:16px}
+  .mystery-card .series-art{margin:10px 0 15px}
+}
