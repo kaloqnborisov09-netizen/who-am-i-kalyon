@@ -12,7 +12,7 @@ const toast = msg => { $("toast").textContent=msg; $("toast").classList.add("sho
 function showSetup(kind){mode=kind;$("setupTitle").textContent=kind==="room"?"Set up your room":"Set up solo mode";$("categorySelect").value="Anime";updateSubcategories();$("setupDialog").showModal();}
 function renderCategories(){ $("categoryGrid").innerHTML=categories.map(([name,desc])=>`<button class="category ${selectedCategory===name?"active":""}" data-cat="${name}"><b>${name}</b><small>${desc}</small></button>`).join(""); document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{selectedCategory=b.dataset.cat;$("categorySelect").value=selectedCategory;renderCategories();});}
 function updateSubcategories(){const c=$("categorySelect").value;const opts=c==="Anime"?["All","Isekai","Shonen","Romance","Shojo","Seinen","Fantasy","Action","Comedy","Slice of Life","Horror","Sports"]:subcategories;$("subSelect").innerHTML=opts.map(x=>`<option>${x}</option>`).join("");}
-async function loadCatalog(){try{const r=await fetch("./data/characters.json");const data=await r.json();catalog=data.filter(x=>x.category==="Anime");}catch(e){catalog=[];}}
+async function loadCatalog(){try{const r=await fetch("./data/characters.json");const data=await r.json();catalog=data.filter(x=>x.category==="Anime");void preloadAnimeArtwork();}catch(e){catalog=[];}}
 function chooseCharacter(cat,sub){let pool=catalog.filter(x=>(sub==="All"||x.subcategory.includes(sub)));if(!pool.length)pool=catalog;return pool[Math.floor(Math.random()*pool.length)];}
 function setArt(container, url, alt){
   container.innerHTML="";
@@ -39,6 +39,42 @@ async function jikanSearch(kind, query){
     }catch(e){if(attempt===2)throw e;await new Promise(resolve=>setTimeout(resolve,500));}
   }
   return null;
+}
+async function preloadAnimeArtwork(){
+  const status=$("artworkStatus");
+  if(status)status.textContent="Preparing anime character pictures…";
+  const franchises=new Map();
+  let done=0;
+  for(const character of catalog){
+    const cached=readArtworkCache(character.id);
+    if(cached.image)character.image=cached.image;
+    if(cached.franchiseImage)character.franchiseImage=cached.franchiseImage;
+    if(!character.image){
+      try{
+        const hit=await jikanSearch("characters",character.name);
+        character.image=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url||"";
+      }catch(e){console.info("Artwork preload skipped:",character.name);}
+      await new Promise(resolve=>setTimeout(resolve,1100));
+    }
+    if(!character.franchiseImage){
+      if(franchises.has(character.franchise))character.franchiseImage=franchises.get(character.franchise);
+      else{
+        try{
+          const hit=await jikanSearch("anime",character.franchise);
+          character.franchiseImage=hit?.images?.jpg?.large_image_url||hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url||"";
+        }catch(e){console.info("Poster preload skipped:",character.franchise);}
+        franchises.set(character.franchise,character.franchiseImage);
+        await new Promise(resolve=>setTimeout(resolve,1100));
+      }
+    }else franchises.set(character.franchise,character.franchiseImage);
+    if(character.image||character.franchiseImage){
+      const saved={image:character.image||"",franchiseImage:character.franchiseImage||""};
+      artworkCache.set(character.id,saved);saveArtworkCache(character.id,saved);
+    }
+    done++;
+    if(status)status.textContent=`Loading anime pictures: ${done}/${catalog.length}`;
+  }
+  if(status)status.textContent=`Anime pictures loaded: ${catalog.filter(x=>x.image||x.franchiseImage).length}/${catalog.length}`;
 }
 async function loadCharacterArtwork(character){
   const characterBox=$("mysteryArt"), seriesBox=$("seriesArt");
