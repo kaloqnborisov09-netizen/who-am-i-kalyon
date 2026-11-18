@@ -53,7 +53,7 @@ async function loadCharacterArtwork(character){
     try{const poster=character.franchiseImage||await commonsArtwork(`${character.franchise} poster logo`);if(poster&&current())setArt(seriesBox,poster,character.franchise);}catch(e){console.info("Title artwork lookup unavailable.");}
   }
 }
-function openRound(character){if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt").innerHTML='<div class="art-placeholder">✦</div>';
+function openRound(character){$("gameDialog").classList.toggle("solo-mode",mode==="solo");if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt").innerHTML='<div class="art-placeholder">✦</div>';
   $("mysteryName").textContent="Hidden from you";
   $("mysteryHint").textContent=`Category: ${character.category} · Difficulty: ${character.difficulty}`;
   $("guessInput").value="";$("titleInput").value="";$("guessFeedback").textContent="";$("guessFeedback").className="guess-feedback";$("questionList").innerHTML='<p class="muted">Questions will appear here.</p>';
