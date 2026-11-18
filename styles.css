@@ -69,3 +69,9 @@ body::before{background:linear-gradient(180deg,rgba(8,5,20,.08),rgba(8,5,20,.3) 
  .wide-dialog.solo-mode .game-layout{grid-template-columns:1fr}
  .wide-dialog.solo-mode .mystery-card,.wide-dialog.solo-mode .game-side>.panel:nth-child(1){grid-column:1;grid-row:auto}
 }
+
+
+/* Fix: let the lobby panels occupy the main gameplay grid columns. */
+.wide-dialog .game-layout>.game-side{display:contents!important}
+.wide-dialog .game-layout>.mystery-card{min-width:0}
+.wide-dialog .game-layout>.game-side>.panel{min-width:0}
