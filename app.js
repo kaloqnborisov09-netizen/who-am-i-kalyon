@@ -19,39 +19,55 @@ function setArt(container, url, alt){
   if(url){const img=document.createElement("img");img.src=url;img.alt=alt;img.loading="lazy";img.onerror=()=>{container.innerHTML='<div class="art-placeholder">✦</div>';};container.append(img);}
   else container.innerHTML='<div class="art-placeholder">✦</div>';
 }
-async function commonsArtwork(searchText){
-  // Wikimedia Commons public API: best-effort image search for non-anime characters and titles.
-  const url=`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(searchText)}&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=640&format=json&origin=*`;
-  const response=await fetch(url); if(!response.ok) return "";
-  const json=await response.json(); const pages=Object.values(json.query?.pages||{});
-  const page=pages.find(x=>x.imageinfo?.[0]?.thumburl||x.imageinfo?.[0]?.url);
-  return page?.imageinfo?.[0]?.thumburl||page?.imageinfo?.[0]?.url||"";
+// Anime artwork is fetched from the public Jikan API and cached in this browser.
+const artworkCache = new Map();
+function readArtworkCache(id){
+  try{return JSON.parse(localStorage.getItem("kalyon-anime-artwork")||"{}")[id]||{};}catch{return {};}
+}
+function saveArtworkCache(id, data){
+  try{const all=JSON.parse(localStorage.getItem("kalyon-anime-artwork")||"{}");all[id]=data;localStorage.setItem("kalyon-anime-artwork",JSON.stringify(all));}catch(e){console.info("Artwork cache unavailable.");}
+}
+async function jikanSearch(kind, query){
+  const url=`https://api.jikan.moe/v4/${kind}?q=${encodeURIComponent(query)}&limit=5`;
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      const response=await fetch(url);
+      if(response.status===429){await new Promise(resolve=>setTimeout(resolve,1200*(attempt+1)));continue;}
+      if(!response.ok)return null;
+      const data=await response.json();
+      return (data.data||[])[0]||null;
+    }catch(e){if(attempt===2)throw e;await new Promise(resolve=>setTimeout(resolve,500));}
+  }
+  return null;
 }
 async function loadCharacterArtwork(character){
   const characterBox=$("mysteryArt"), seriesBox=$("seriesArt");
-  setArt(characterBox, character.image || character.characterImage || "", character.name);
+  const cached=artworkCache.get(character.id)||readArtworkCache(character.id);
+  if(cached.image)character.image=cached.image;
+  if(cached.franchiseImage)character.franchiseImage=cached.franchiseImage;
+  setArt(characterBox,character.image||character.characterImage||"","Character artwork: "+character.name);
   $("seriesArtLabel").textContent=(character.franchise||"Series").toUpperCase();
-  setArt(seriesBox, character.franchiseImage || character.seriesImage || "", character.franchise||"Series artwork");
+  setArt(seriesBox,character.franchiseImage||character.seriesImage||"",character.franchise||"Anime title artwork");
   const current=()=>activeCharacter?.id===character.id;
-  if(character.category==="Anime"){
-    if(!character.image){
-      try{
-        const res=await fetch(`https://api.jikan.moe/v4/characters?q=${encodeURIComponent(character.name)}&limit=5`);
-        if(res.ok){const data=await res.json();const hit=(data.data||[]).find(x=>normalize(x.name||"")===normalize(character.name));
-          const portrait=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url;
-          if(portrait&&current())setArt(characterBox,portrait,character.name);
-        }
-      }catch(e){console.info("Character artwork lookup unavailable.");}
+  if(character.category!=="Anime"||(character.image&&character.franchiseImage))return;
+  const updated={image:character.image||"",franchiseImage:character.franchiseImage||""};
+  try{
+    if(!updated.image){
+      const hit=await jikanSearch("characters",character.name);
+      const portrait=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url||"";
+      if(portrait){updated.image=portrait;character.image=portrait;if(current())setArt(characterBox,portrait,character.name);}
     }
-    if(!character.franchiseImage){
-      try{const res=await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(character.franchise)}&limit=1`);
-        if(res.ok){const data=await res.json(),hit=(data.data||[]).find(x=>normalize(x.title||"")===normalize(character.franchise)||normalize(x.title_english||"")===normalize(character.franchise));const poster=hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url;if(poster&&current())setArt(seriesBox,poster,character.franchise);}
-      }catch(e){console.info("Series artwork lookup unavailable.");}
+  }catch(e){console.info("Character artwork lookup unavailable.",e);}
+  try{
+    if(!updated.franchiseImage){
+      const hit=await jikanSearch("anime",character.franchise);
+      const poster=hit?.images?.jpg?.large_image_url||hit?.images?.jpg?.image_url||hit?.images?.webp?.image_url||"";
+      if(poster){updated.franchiseImage=poster;character.franchiseImage=poster;if(current())setArt(seriesBox,poster,character.franchise);}
     }
-  }else{
-    try{const portrait=character.image||await commonsArtwork(`${character.name} ${character.franchise} character`);if(portrait&&current())setArt(characterBox,portrait,character.name);}catch(e){console.info("Character artwork lookup unavailable.");}
-    try{const poster=character.franchiseImage||await commonsArtwork(`${character.franchise} poster logo`);if(poster&&current())setArt(seriesBox,poster,character.franchise);}catch(e){console.info("Title artwork lookup unavailable.");}
-  }
+  }catch(e){console.info("Anime poster lookup unavailable.",e);}
+  if(updated.image||updated.franchiseImage){artworkCache.set(character.id,updated);saveArtworkCache(character.id,updated);}
+  // If a portrait is unavailable, show the anime poster rather than an empty image box.
+  if(current()&&!updated.image&&updated.franchiseImage)setArt(characterBox,updated.franchiseImage,character.franchise+" artwork");
 }
 function openRound(character){$("gameDialog").classList.toggle("solo-mode",mode==="solo");if(!character){toast("No characters in that collection yet.");return;}activeCharacter=character;characterGuessAwarded=false;titleGuessAwarded=false;$("soloScore").textContent=`Score: ${soloScore}`;$("mysteryArt").innerHTML='<div class="art-placeholder">?</div>';$("seriesArt").innerHTML='<div class="art-placeholder">✦</div>';
   $("mysteryName").textContent="Hidden from you";
