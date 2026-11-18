@@ -126,3 +126,25 @@ button:disabled{cursor:not-allowed;opacity:.58}
  .guess-panel{margin-top:0}
  .chat-log{height:120px}
 }
+
+
+/* Correct grid placement: guessing panel sits immediately BELOW chat in the right column. */
+@media(min-width:851px){
+ .wide-dialog .game-layout{grid-template-rows:auto auto auto;align-items:start}
+ .wide-dialog .game-layout>.game-side>.panel:nth-child(3){grid-column:3;grid-row:1 / span 2}
+ .wide-dialog .game-layout>.game-side>.guess-panel{grid-column:3;grid-row:3;align-self:start}
+ .wide-dialog .game-layout>.game-side>.panel:nth-child(2){grid-column:1;grid-row:1 / span 3}
+ .wide-dialog .game-layout>.game-side>.panel:nth-child(1){grid-column:2;grid-row:2}
+ .wide-dialog .mystery-card{grid-column:2;grid-row:1}
+ .wide-dialog .chat-log{height:clamp(85px,12vh,125px)}
+ .wide-dialog .guess-panel{margin-top:0}
+}
+@media(min-width:851px){
+ .wide-dialog.solo-mode .game-layout>.game-side>.guess-panel{grid-column:2;grid-row:2}
+}
+@media(max-width:850px){
+ .wide-dialog .game-layout>.game-side>.guess-panel{grid-column:1 / -1;grid-row:4}
+}
+@media(max-width:560px){
+ .wide-dialog .game-layout>.game-side>.guess-panel{grid-column:1;grid-row:auto}
+}
